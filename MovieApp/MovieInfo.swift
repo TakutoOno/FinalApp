@@ -14,7 +14,7 @@ class MovieInfo: Object {
     
     @objc dynamic var title: String = ""
     
-    @objc dynamic var picture: String?
+    @objc dynamic var poster_path: String?
     
     @objc dynamic var overview: String = ""
     

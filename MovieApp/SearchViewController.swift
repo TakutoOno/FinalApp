@@ -7,7 +7,6 @@
 
 import UIKit
 import Foundation
-import Moya
 
 class SearchViewController: UIViewController {
     
@@ -25,8 +24,9 @@ class SearchViewController: UIViewController {
     //MARK: - IBAction
     
     @IBAction func searchButton(_ sender: Any) {
+        
         let searchResultViewController = self.storyboard?.instantiateViewController(withIdentifier: "goToSearchResult") as! SearchResultViewController
-        searchResultViewController.searchText = searchTextField.text!
+        searchResultViewController.searchText = searchTextField.text
         self.navigationController?.pushViewController(searchResultViewController, animated: true)
     }
 }

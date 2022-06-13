@@ -16,6 +16,8 @@
 		AEDF22EE2849EACC00A08B79 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDF22ED2849EACC00A08B79 /* MovieCell.swift */; };
 		AEDF22F3284DCC5100A08B79 /* PointReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDF22F1284DCC5100A08B79 /* PointReviewCell.swift */; };
 		AEDF22F4284DCC5100A08B79 /* PointReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEDF22F2284DCC5100A08B79 /* PointReviewCell.xib */; };
+		AEECF1732855F37E00D802C1 /* RecommendationMovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEECF1712855F37E00D802C1 /* RecommendationMovieCell.swift */; };
+		AEECF1742855F37E00D802C1 /* RecommendationMovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEECF1722855F37E00D802C1 /* RecommendationMovieCell.xib */; };
 		AEF9B38D2848339000C1A8CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF9B38C2848339000C1A8CA /* AppDelegate.swift */; };
 		AEF9B38F2848339000C1A8CA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF9B38E2848339000C1A8CA /* SceneDelegate.swift */; };
 		AEF9B3962848339200C1A8CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEF9B3952848339200C1A8CA /* Assets.xcassets */; };
@@ -41,6 +43,8 @@
 		AEDF22ED2849EACC00A08B79 /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		AEDF22F1284DCC5100A08B79 /* PointReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointReviewCell.swift; sourceTree = "<group>"; };
 		AEDF22F2284DCC5100A08B79 /* PointReviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PointReviewCell.xib; sourceTree = "<group>"; };
+		AEECF1712855F37E00D802C1 /* RecommendationMovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationMovieCell.swift; sourceTree = "<group>"; };
+		AEECF1722855F37E00D802C1 /* RecommendationMovieCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendationMovieCell.xib; sourceTree = "<group>"; };
 		AEF9B3892848339000C1A8CA /* MovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEF9B38C2848339000C1A8CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AEF9B38E2848339000C1A8CA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +104,8 @@
 				AEDF22E92849C8B900A08B79 /* PointReviewViewController.swift */,
 				AEDF22ED2849EACC00A08B79 /* MovieCell.swift */,
 				AEDF22EB2849E8EA00A08B79 /* MovieCell.xib */,
+				AEECF1712855F37E00D802C1 /* RecommendationMovieCell.swift */,
+				AEECF1722855F37E00D802C1 /* RecommendationMovieCell.xib */,
 				AEDF22F1284DCC5100A08B79 /* PointReviewCell.swift */,
 				AEDF22F2284DCC5100A08B79 /* PointReviewCell.xib */,
 				AEF9B3A22848772000C1A8CA /* MovieModel.swift */,
@@ -191,6 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AEA922EC2849986E0050EDD1 /* Main.storyboard in Resources */,
+				AEECF1742855F37E00D802C1 /* RecommendationMovieCell.xib in Resources */,
 				AEF9B3992848339200C1A8CA /* LaunchScreen.storyboard in Resources */,
 				AEDF22EC2849E8EA00A08B79 /* MovieCell.xib in Resources */,
 				AEDF22F4284DCC5100A08B79 /* PointReviewCell.xib in Resources */,
@@ -250,6 +257,7 @@
 				AEDF22EE2849EACC00A08B79 /* MovieCell.swift in Sources */,
 				AEF9B3A728487F7100C1A8CA /* SearchViewController.swift in Sources */,
 				AEDF22EA2849C8B900A08B79 /* PointReviewViewController.swift in Sources */,
+				AEECF1732855F37E00D802C1 /* RecommendationMovieCell.swift in Sources */,
 				AEF9B38D2848339000C1A8CA /* AppDelegate.swift in Sources */,
 				AEDF22E62849A8C400A08B79 /* SearchResultViewController.swift in Sources */,
 				AEF9B3A528487D4800C1A8CA /* APIInfo.swift in Sources */,

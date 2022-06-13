@@ -12,38 +12,41 @@ class PointReviewViewController: UIViewController {
     
     @IBOutlet weak var pointSelectTextField: UITextField!
     @IBOutlet weak var timeSelectTextField: UITextField!
-    @IBOutlet weak var commentTextField: UITextField!
+
+    @IBOutlet weak var commentTextView: UITextView!
     
     var pointSelectPickerView: UIPickerView = UIPickerView()
     var timeSelectPickerView: UIPickerView = UIPickerView()
     
-    let realm = try! Realm()
-    var movie: MovieModel.Result!
-    var movieInfo: MovieInfo!
+    var movie: MovieModel.Result?
+    
+    var movieInfo: MovieInfo?
     
     var pointSelectPickerRow: Int = 0
+    
     var timeSelectPickerRow: Int = 0
+    
     var pickerbuttonNumber : Int = 0
     
     var pointList: [String] = [
-    "鳥肌ポイント",
-    "感動ポイント",
-    "役者ポイント",
-    "惜しいポイント"
+        "鳥肌ポイント",
+        "感動ポイント",
+        "役者ポイント",
+        "惜しいポイント"
     ]
     
     var timeList: [String] = [
-    "起",
-    "承",
-    "転",
-    "結"
+        "起",
+        "承",
+        "転",
+        "結"
     ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        pointSelectTextField.inputView = pointSelectPickerView
-        timeSelectTextField.inputView = timeSelectPickerView
+        self.pointSelectTextField.inputView = self.pointSelectPickerView
+        self.timeSelectTextField.inputView = self.timeSelectPickerView
         
         let toolbar = UIToolbar()
         let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
@@ -51,51 +54,39 @@ class PointReviewViewController: UIViewController {
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(PointReviewViewController.cancelPicker))
         toolbar.items = [cancelButton, space, doneButton]
         toolbar.sizeToFit()
-        pointSelectTextField.inputAccessoryView = toolbar
-        timeSelectTextField.inputAccessoryView = toolbar
-
-        pointSelectPickerView.delegate = self
-        pointSelectPickerView.dataSource = self
-        timeSelectPickerView.delegate = self
-        timeSelectPickerView.dataSource = self
-        pointSelectPickerView.tag = 1
-        timeSelectPickerView.tag = 2
+        self.pointSelectTextField.inputAccessoryView = toolbar
+        self.timeSelectTextField.inputAccessoryView = toolbar
+        
+        self.pointSelectPickerView.delegate = self
+        self.pointSelectPickerView.dataSource = self
+        self.timeSelectPickerView.delegate = self
+        self.timeSelectPickerView.dataSource = self
+        self.pointSelectPickerView.tag = 1
+        self.timeSelectPickerView.tag = 2
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        pointSelectPickerView.reloadAllComponents()
-        timeSelectPickerView.reloadAllComponents()
+        self.pointSelectPickerView.reloadAllComponents()
+        self.timeSelectPickerView.reloadAllComponents()
     }
     
-    
     @IBAction func pointReviewRegisterButton(_ sender: Any) {
-        let pointReview = PointReview()
-//        let pointList: [String: Any] =
-//        [
-//        "pointReview": ["point": self.pointSelectTextField.text!,
-//                         "time": self.timeSelectTextField.text!,
-//                         "comment": self.commentTextField.text!]
-//        ]
-//
-//        let pointReview = MovieInfo(value: pointList)
-//        try! realm.write{
-//            self.realm.add(pointReview)
-//        }
-        
-        try! realm.write {
-//            let allPointReview = realm.objects(PointReview.self)
-//            if allPointReview.count != 0 {
-//                pointReview.id = allPointReview.max(ofProperty: "id")! + 1
-//            }
-//            guard let movieId = movieId else { return }
-//            pointReview.movieInfoId = movieId
-            pointReview.point = self.pointSelectTextField.text!
-            pointReview.time = self.timeSelectTextField.text!
-            pointReview.comment = self.commentTextField.text!
-            self.realm.add(pointReview)
-            movieInfo.pointReviewList.append(pointReview)
+        if let realm = try? Realm() {
+            guard let movieInfo = movieInfo else { return }
+            let pointReview = PointReview()
+            do {
+                try realm.write {
+                    pointReview.point = self.pointSelectTextField.text!
+                    pointReview.time = self.timeSelectTextField.text!
+                    pointReview.comment = self.commentTextView.text!
+     //               realm.add(pointReview)
+                    movieInfo.pointReviewList.append(pointReview)
+                }
+            } catch {
+                return
+            }
         }
         self.navigationController?.popViewController(animated: true)
     }
@@ -111,44 +102,43 @@ extension PointReviewViewController: UIPickerViewDelegate, UIPickerViewDataSourc
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         // アイテム表示個数を返す
-        if (pickerView.tag == 1)  {
-        return pointList.count
+        if pickerView.tag == 1 {
+            return self.pointList.count
         } else {
-            return timeList.count
+            return self.timeList.count
         }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         // 表示する文字列を返す
-        if (pickerView.tag == 1) {
-            pickerbuttonNumber = 1
-        return pointList[row]
+        if pickerView.tag == 1 {
+            self.pickerbuttonNumber = 1
+            return self.pointList[row]
         } else {
-            pickerbuttonNumber = 2
-            return timeList[row]
+            self.pickerbuttonNumber = 2
+            return self.timeList[row]
         }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if (pickerView.tag == 1) {
-        pointSelectPickerRow = row
+        if pickerView.tag == 1 {
+            self.pointSelectPickerRow = row
         } else {
-            timeSelectPickerRow = row
+            self.timeSelectPickerRow = row
         }
     }
     
     @objc func tappedDone(){
         if pickerbuttonNumber == 1 {
-        pointSelectTextField.text = pointList[pointSelectPickerRow]
-        pointSelectTextField.resignFirstResponder()
+            self.pointSelectTextField.text = self.pointList[self.pointSelectPickerRow]
+            self.pointSelectTextField.resignFirstResponder()
         } else {
-            timeSelectTextField.text = timeList[timeSelectPickerRow]
-            timeSelectTextField.resignFirstResponder()
-       }
-
+            self.timeSelectTextField.text = self.timeList[self.timeSelectPickerRow]
+            self.timeSelectTextField.resignFirstResponder()
+        }
+        
     }
     @objc func cancelPicker(){
         view.endEditing(true)
     }
-
 }

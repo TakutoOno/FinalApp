@@ -13,10 +13,10 @@ class SearchResultViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    let realm = try! Realm()
+    let realm = try? Realm()
     var movieArray: [MovieModel.Result] = []
     var search :MovieModel!
-    var searchText :String!
+    var searchText :String?
     // セルのサイドの余白の比率(XD参照)
     private let sideMarginRatio: CGFloat = 0.06
     // セル同士の余白
@@ -24,14 +24,16 @@ class SearchResultViewController: UIViewController {
     // 1列に表示するセルの数
     private let itemPerWidth: CGFloat = 2
     
+    //MARK: - LifeCycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //カスタムセルの登録
         let nib = UINib(nibName: "MovieCell", bundle: nil)
-        collectionView.register(nib, forCellWithReuseIdentifier: "MovieCell")
+        self.collectionView.register(nib, forCellWithReuseIdentifier: "MovieCell")
         
-        collectionView.dataSource = self
-        collectionView.delegate = self
+        self.collectionView.dataSource = self
+        self.collectionView.delegate = self
         let layout = UICollectionViewFlowLayout()
         //                //
         //        layout.itemSize = CGSize(width: collectionView.frame.width / 4, height: collectionView.frame.height / 6)
@@ -43,8 +45,6 @@ class SearchResultViewController: UIViewController {
         //               collectionView.collectionViewLayout = layout
     }
     
-    //MARK: - LifeCycle
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let provider = MoyaProvider<API>()
@@ -54,6 +54,7 @@ class SearchResultViewController: UIViewController {
                 case .success(let response):
                     let data = response.data
                     self.search = try! JSONDecoder().decode(MovieModel.self, from: data)
+        //            guard let search = self.search else { return }
                     self.movieArray = self.search.results
                     self.collectionView.reloadData()
                     print(self.movieArray)
@@ -64,6 +65,7 @@ class SearchResultViewController: UIViewController {
         }
     }
 }
+
 //MARK: - UICollectionViewDelegate, UICollectionViewDataSource
 
 extension SearchResultViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -78,17 +80,23 @@ extension SearchResultViewController: UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let realm = realm else { return }
         let movie = movieArray[indexPath.row]
-        let movieInfo = MovieInfo()
         let movieDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "goToMovieDetail") as! MovieDetailViewController
-//        if movie.id == MovieInfo.id {
-//            
-//        }
+        //movie.idに一致するidがあるかをfilterで検索する
+        //あればそのオブジェクトを渡す
+        //nullになれば空のオブジェクトを渡す
+        var movieInfo = realm.object(ofType: MovieInfo.self, forPrimaryKey: movie.id)
+    //    let registeredMovie = realm.objects(MovieInfo.self).filter("id = %@", movie.id)
+        if movieInfo == nil {
+             movieInfo = MovieInfo()
+        }
         movieDetailViewController.movieInfo = movieInfo
         movieDetailViewController.movie = movie
         self.navigationController?.pushViewController(movieDetailViewController, animated: true)
     }
 }
+
 //MARK: - UICollectionViewDelegateFlowLayout
 extension SearchResultViewController: UICollectionViewDelegateFlowLayout {
     /// セルのサイズ指定

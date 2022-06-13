@@ -23,8 +23,7 @@ class PointReviewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-    
+    //映画レビューはMovieInfoのpointReviewListから取得
     func setPointReview(_ pointReview: PointReview) {
         self.pointLabel.text = pointReview.point
         self.timeLabel.text = pointReview.time
