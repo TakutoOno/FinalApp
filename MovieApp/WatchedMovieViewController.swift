@@ -16,12 +16,6 @@ class WatchedMovieViewController: UIViewController {
     
     var registeredMovieInfoList = try? Realm().objects(MovieInfo.self)
     
-    private let sideMarginRatio: CGFloat = 0.06
-    // セル同士の余白
-    private let itemSpacing: CGFloat = 16
-    // 1列に表示するセルの数
-    private let itemPerWidth: CGFloat = 2
-    
 //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +35,7 @@ class WatchedMovieViewController: UIViewController {
         collectionView.reloadData()
         
         let layout = UICollectionViewFlowLayout()
-        collectionView.collectionViewLayout = layout
+       collectionView.collectionViewLayout = layout
 
     }
     
@@ -72,9 +66,15 @@ extension WatchedMovieViewController: UICollectionViewDelegate, UICollectionView
         movieDetailViewController.movieInfo = movieInfo
         self.navigationController?.pushViewController(movieDetailViewController, animated: true)
     }
-}
     
+//    private func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimunLineSpacingForSectionAt section: Int) -> CGFloat {
+//        let space = self.collectionView.frame.width / 100
+//            return space
+//
+//    }
+}
 //MARK: - UICollectionViewDelegateFlowLayout
+
 extension WatchedMovieViewController: UICollectionViewDelegateFlowLayout {
     /// セルのサイズ指定
     ///
@@ -84,10 +84,10 @@ extension WatchedMovieViewController: UICollectionViewDelegateFlowLayout {
     ///   - indexPath: IndexPath
     /// - Returns: セルのサイズ
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemSpace = self.collectionView.frame.width / (self.collectionView.frame.width * self.sideMarginRatio) * (self.itemPerWidth + 1)
-        let itemSizeWidth = self.collectionView.frame.width - itemSpace
-        let width = itemSizeWidth / 2
-        // XDの比率に合わせるため(height = width - 7)になるように設定
+        // :親viewのwidth - 左右のマージン - セル間の水平方向の間隔 * (列数 - 1)
+        let itemSpace = self.collectionView.frame.width - 10 - 10 * 2
+        let itemSizeWidth = self.collectionView.frame.width - itemSpace * 6
+        let width = itemSpace / 3
         return CGSize(width: width, height: width * 1.5)
     }
     /// 各カスタムセル外枠の余白
@@ -98,7 +98,8 @@ extension WatchedMovieViewController: UICollectionViewDelegateFlowLayout {
     ///   - section: Int
     /// - Returns: UIEdgeInsets
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let space = self.collectionView.frame.width / (self.collectionView.frame.width * self.sideMarginRatio)
-        return UIEdgeInsets(top: 15, left: space * 1.2, bottom: 16, right: space * 1.2)
+        let space = self.collectionView.frame.width / 50
+        return UIEdgeInsets(top: 20, left: 5 , bottom: 16, right: 5 )
     }
 }
+

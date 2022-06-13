@@ -17,26 +17,25 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="r7x-rs-A3R">
-                        <rect key="frame" x="0.0" y="0.0" width="175" height="220"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="220" id="LfE-nJ-jKR"/>
-                            <constraint firstAttribute="width" constant="175" id="kDm-nk-cTH"/>
-                        </constraints>
+                        <rect key="frame" x="0.0" y="0.0" width="175" height="226"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDM-ra-Hx7">
-                        <rect key="frame" x="0.0" y="220" width="175" height="43"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDM-ra-Hx7">
+                        <rect key="frame" x="0.0" y="231" width="175" height="27"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="27" id="7KA-Yc-Ecy"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="iDM-ra-Hx7" secondAttribute="bottom" id="8mV-Nl-QHQ"/>
+                    <constraint firstAttribute="bottom" secondItem="iDM-ra-Hx7" secondAttribute="bottom" constant="5" id="4ic-9i-NKa"/>
                     <constraint firstAttribute="trailing" secondItem="r7x-rs-A3R" secondAttribute="trailing" id="CxH-a1-srT"/>
+                    <constraint firstItem="iDM-ra-Hx7" firstAttribute="top" secondItem="r7x-rs-A3R" secondAttribute="bottom" constant="5" id="YC8-Jj-dwy"/>
                     <constraint firstItem="iDM-ra-Hx7" firstAttribute="leading" secondItem="gqL-Dz-9le" secondAttribute="leading" id="dwo-dY-oHi"/>
                     <constraint firstAttribute="trailing" secondItem="iDM-ra-Hx7" secondAttribute="trailing" id="gbJ-wQ-vjA"/>
                     <constraint firstItem="r7x-rs-A3R" firstAttribute="top" secondItem="gqL-Dz-9le" secondAttribute="top" id="ggQ-dc-jLt"/>
-                    <constraint firstItem="iDM-ra-Hx7" firstAttribute="top" secondItem="r7x-rs-A3R" secondAttribute="bottom" id="mVc-eS-NEE"/>
                     <constraint firstItem="r7x-rs-A3R" firstAttribute="leading" secondItem="gqL-Dz-9le" secondAttribute="leading" id="qT4-bP-n1f"/>
                 </constraints>
             </collectionViewCellContentView>
@@ -45,7 +44,7 @@
                 <outlet property="imageView" destination="r7x-rs-A3R" id="Q7u-DE-FBE"/>
                 <outlet property="titleLabel" destination="iDM-ra-Hx7" id="MJu-XA-JA6"/>
             </connections>
-            <point key="canvasLocation" x="255.79710144927537" y="198.54910714285714"/>
+            <point key="canvasLocation" x="255.79710144927537" y="190.51339285714286"/>
         </collectionViewCell>
     </objects>
 </document>

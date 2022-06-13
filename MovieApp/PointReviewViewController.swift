@@ -70,6 +70,8 @@ class PointReviewViewController: UIViewController {
         
         self.pointSelectPickerView.reloadAllComponents()
         self.timeSelectPickerView.reloadAllComponents()
+        
+        commentTextView.text = ""
     }
     
     @IBAction func pointReviewRegisterButton(_ sender: Any) {
