@@ -478,40 +478,8 @@
             filePath = "MovieApp/RecommendationViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "viewWillAppear(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "6BA4734D-2710-4439-8514-386F0B23EE6E"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MovieApp/RecommendationViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "viewWillAppear(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "4BED7BED-3FC8-4A06-94E8-EEC82AFF2872"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MovieApp/RecommendationViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -647,22 +615,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1420121D-A7E7-4A62-ABFB-E34297795E83"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MovieApp/RecommendationViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "viewWillAppear(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "7FF4358B-24E9-46D9-891F-D072D77373EE"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -670,116 +622,24 @@
             filePath = "MovieApp/RecommendationViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
             landmarkName = "RecommendationViewController"
             landmarkType = "3">
-            <Locations>
-               <Location
-                  uuid = "7FF4358B-24E9-46D9-891F-D072D77373EE - 27f53a1e2ecf051c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MovieApp.RecommendationViewController.actionMovieInfoList.getter : RealmSwift.Results&lt;MovieApp.MovieInfo&gt;"
-                  moduleName = "MovieApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/t-ono/Documents/%E6%9C%80%E7%B5%82%E6%88%90%E6%9E%9C%E7%89%A9%E9%96%A2%E9%80%A3/MovieApp/MovieApp/RecommendationViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "27"
-                  endingLineNumber = "27"
-                  offsetFromSymbolStart = "88">
-               </Location>
-               <Location
-                  uuid = "7FF4358B-24E9-46D9-891F-D072D77373EE - 1ba741eed0850100"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MovieApp.RecommendationViewController.actionMovieInfoList.setter : RealmSwift.Results&lt;MovieApp.MovieInfo&gt;"
-                  moduleName = "MovieApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/t-ono/Documents/%E6%9C%80%E7%B5%82%E6%88%90%E6%9E%9C%E7%89%A9%E9%96%A2%E9%80%A3/MovieApp/MovieApp/RecommendationViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "27"
-                  endingLineNumber = "27"
-                  offsetFromSymbolStart = "108">
-               </Location>
-               <Location
-                  uuid = "7FF4358B-24E9-46D9-891F-D072D77373EE - 10f12745c6a696ee"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MovieApp.RecommendationViewController.actionMovieInfoList.modify : RealmSwift.Results&lt;MovieApp.MovieInfo&gt;"
-                  moduleName = "MovieApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/t-ono/Documents/%E6%9C%80%E7%B5%82%E6%88%90%E6%9E%9C%E7%89%A9%E9%96%A2%E9%80%A3/MovieApp/MovieApp/RecommendationViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "20">
-               </Location>
-               <Location
-                  uuid = "7FF4358B-24E9-46D9-891F-D072D77373EE - dbe769835a367c64"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MovieApp.RecommendationViewController.actionMovieInfoList.modify : RealmSwift.Results&lt;MovieApp.MovieInfo&gt; with unmangled suffix &quot;.resume.0&quot;"
-                  moduleName = "MovieApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/t-ono/Documents/%E6%9C%80%E7%B5%82%E6%88%90%E6%9E%9C%E7%89%A9%E9%96%A2%E9%80%A3/MovieApp/MovieApp/RecommendationViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "27"
-                  endingLineNumber = "27"
-                  offsetFromSymbolStart = "16">
-               </Location>
-               <Location
-                  uuid = "7FF4358B-24E9-46D9-891F-D072D77373EE - 170f3b37648b73ac"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MovieApp.RecommendationViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; MovieApp.RecommendationViewController"
-                  moduleName = "MovieApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/t-ono/Documents/%E6%9C%80%E7%B5%82%E6%88%90%E6%9E%9C%E7%89%A9%E9%96%A2%E9%80%A3/MovieApp/MovieApp/RecommendationViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "27"
-                  endingLineNumber = "27"
-                  offsetFromSymbolStart = "360">
-               </Location>
-               <Location
-                  uuid = "7FF4358B-24E9-46D9-891F-D072D77373EE - ffd653e06db92a56"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MovieApp.RecommendationViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;MovieApp.RecommendationViewController&gt;"
-                  moduleName = "MovieApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/t-ono/Documents/%E6%9C%80%E7%B5%82%E6%88%90%E6%9E%9C%E7%89%A9%E9%96%A2%E9%80%A3/MovieApp/MovieApp/RecommendationViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "27"
-                  endingLineNumber = "27"
-                  offsetFromSymbolStart = "336">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "FAA29EA0-8D56-4AD9-965E-79E35A9C357C"
+            uuid = "4E3302B3-D5E1-436F-8D07-E5BFA543000C"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MovieApp/RecommendationViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
             landmarkName = "RecommendationViewController"
             landmarkType = "3">
          </BreakpointContent>

@@ -12,29 +12,18 @@ import RealmSwift
 class RecommendationViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    
-//    var viewWidth: CGFloat!
-//    var viewHeight: CGFloat!
-//    var cellWitdh: CGFloat!
-//    var cellHeight: CGFloat!
-//    var cellOffset: CGFloat!
-//    var navHeight: CGFloat!
-
+    @IBOutlet weak var actionCollectionView: UICollectionView!
     
     var realm: Realm? = nil
     
     var registeredMovieInfoList = try! Realm().objects(MovieInfo.self)
-    var actionMovieInfoList = try! Realm().objects(MovieInfo.self).filter("firstGenreId = %@", 27)
+    var actionMovieInfoList = try! Realm().objects(MovieInfo.self).filter("firstGenreId = %@ || secondGenreId = %@ || thirdGenreId = %@ || forthGenreId = %@", 28, 28, 28, 28)
     
+    //"firstGenreId = '28' OR secondGenreId = '28' OR thirdGenreId = '28' OR forthGenreId = '28'"
     var random: [MovieInfo] = []
-//
-//    private let sideMarginRatio: CGFloat = 0.06
-//    // セル同士の余白
-//    private let itemSpacing: CGFloat = 16
-//    // 1列に表示するセルの数
-//    private let itemPerWidth: CGFloat = 2
-//
-//MARK: - LifeCycle
+    var randomAction: [MovieInfo] = []
+    
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
@@ -43,62 +32,73 @@ class RecommendationViewController: UIViewController {
         
         let nib = UINib(nibName: "RecommendationMovieCell", bundle: nil)
         self.collectionView.register(nib, forCellWithReuseIdentifier: "RecommendationMovieCell")
+        self.actionCollectionView.register(nib, forCellWithReuseIdentifier: "RecommendationMovieCell")
         
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
+        self.actionCollectionView.dataSource = self
+        self.actionCollectionView.delegate = self
+        self.collectionView.tag = 1
+        self.actionCollectionView.tag = 2
         
         view.backgroundColor = UIColor.black
         collectionView.backgroundColor = UIColor.black
         
-
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        randomAction = Array(actionMovieInfoList).shuffled()
         random = Array(registeredMovieInfoList).shuffled()
         
-//        let randomA = registeredMovieInfoList.randomElement()!
-//        for _ in 0...10 {
-//            random.append(randomA)
-//        }
-//        let q = registeredMovieInfoList.randomElement()?.id
-//        let e = realm?.object(ofType: MovieInfo.self, forPrimaryKey: q)
-//        registeredMovieInfoList.shuffled()
-        
         collectionView.reloadData()
-        
-//        let layout = UICollectionViewFlowLayout()
-//        collectionView.collectionViewLayout = layout
-
+        actionCollectionView.reloadData()
     }
     
 }
-    //MARK: - collectionView
-    
+//MARK: - collectionView
+
 extension RecommendationViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-  //      10以上なら１０　１０以下ならカウント
-        if random.count >= 10 {
-        return 10
+        //      10以上なら１０　１０以下ならカウント
+        if collectionView.tag == 1 {
+            if random.count >= 10 {
+                return 10
+            } else {
+                return random.count
+            }
         } else {
-            return random.count
+            if randomAction.count >= 10 {
+                return 10
+            } else {
+                return randomAction.count
+            }
         }
-            
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendationMovieCell", for: indexPath) as! RecommendationMovieCell
-    //    guard let registeredMovieInfoList = registeredMovieInfoList else { return cell}
-        cell.setMovie(search: random[indexPath.row])
+        //    guard let registeredMovieInfoList = registeredMovieInfoList else { return cell}
+        if collectionView.tag == 1 {
+            cell.setMovie(search: random[indexPath.row])
+        } else {
+            cell.setMovie(search: randomAction[indexPath.row])
+        }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-  //      guard let registeredMovieInfoList = registeredMovieInfoList else { return }
-        let movie = random[indexPath.row]
-  //      var movieInfo:MovieInfo = MovieInfo()
+        //      guard let registeredMovieInfoList = registeredMovieInfoList else { return }
+        let movie: MovieInfo
+        if collectionView.tag == 1 {
+            movie = random[indexPath.row]
+        } else {
+            movie = randomAction[indexPath.row]
+        }
+        //      var movieInfo:MovieInfo = MovieInfo()
         let movieDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "goToMovieDetail") as! MovieDetailViewController
         //movie.idに一致するidがあるかをfilterで検索する
         //あればそのオブジェクトを渡す
@@ -108,12 +108,12 @@ extension RecommendationViewController: UICollectionViewDelegate, UICollectionVi
         self.navigationController?.pushViewController(movieDetailViewController, animated: true)
     }
 }
-    
+
 //MARK: - UICollectionViewDelegateFlowLayout
 
 extension RecommendationViewController: UICollectionViewDelegateFlowLayout {
     //セル間の間隔を指定
-private func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimunLineSpacingForSectionAt section: Int) -> CGFloat {
+    private func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimunLineSpacingForSectionAt section: Int) -> CGFloat {
         return 1
     }
 }

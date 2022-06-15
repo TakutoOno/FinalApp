@@ -9,4 +9,5 @@ target 'MovieApp' do
   pod 'Moya','~>15.0'
   pod 'RealmSwift'
   pod 'SDWebImage'
+  pod 'TTTAttributedLabel'
 end
