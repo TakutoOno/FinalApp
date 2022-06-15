@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Foundation
 import RealmSwift
 
 class RecommendationViewController: UIViewController {
@@ -23,6 +24,7 @@ class RecommendationViewController: UIViewController {
     var realm: Realm? = nil
     
     var registeredMovieInfoList = try! Realm().objects(MovieInfo.self)
+    var actionMovieInfoList = try! Realm().objects(MovieInfo.self).filter("firstGenreId = %@", 27)
     
     var random: [MovieInfo] = []
 //
@@ -45,10 +47,8 @@ class RecommendationViewController: UIViewController {
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         
-//        viewWidth = view.frame.width
-//               viewHeight = view.frame.height
-//               //ナビゲーションバーの高さ
-//               navHeight = self.navigationController?.navigationBar.frame.size.height
+        view.backgroundColor = UIColor.black
+        collectionView.backgroundColor = UIColor.black
         
 
     }

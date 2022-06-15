@@ -38,7 +38,7 @@
                         </constraints>
                     </stackView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UOx-eH-nT2">
-                        <rect key="frame" x="26" y="54" width="248" height="346"/>
+                        <rect key="frame" x="26" y="54" width="248" height="336"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -46,8 +46,8 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="UOx-eH-nT2" secondAttribute="trailing" constant="26" id="HDH-RN-SOD"/>
-                    <constraint firstAttribute="bottom" secondItem="UOx-eH-nT2" secondAttribute="bottom" id="Moe-lX-jYB"/>
                     <constraint firstAttribute="trailing" secondItem="nlO-Hg-mC7" secondAttribute="trailing" id="Ofy-Yu-dG7"/>
+                    <constraint firstAttribute="bottom" secondItem="UOx-eH-nT2" secondAttribute="bottom" constant="10" id="cFI-el-6eq"/>
                     <constraint firstItem="UOx-eH-nT2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="26" id="e6K-Lr-czg"/>
                     <constraint firstItem="nlO-Hg-mC7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="rGc-ZX-0UX"/>
                     <constraint firstItem="nlO-Hg-mC7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="sLe-3b-WFx"/>

@@ -18,6 +18,15 @@ class MovieInfo: Object {
     
     @objc dynamic var overview: String = ""
     
+    @objc dynamic var firstGenreId: Int = 0
+    
+    @objc dynamic var secondGenreId: Int = 0
+    
+    @objc dynamic var thirdGenreId: Int = 0
+    
+    @objc dynamic var forthGenreId: Int = 0
+    
+    
     override static func primaryKey() -> String? {
         return "id"
     }

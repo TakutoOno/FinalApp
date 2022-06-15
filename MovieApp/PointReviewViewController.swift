@@ -10,11 +10,14 @@ import RealmSwift
 
 class PointReviewViewController: UIViewController {
     
+    @IBOutlet weak var pointSelectLabel: UILabel!
     @IBOutlet weak var pointSelectTextField: UITextField!
-    @IBOutlet weak var timeSelectTextField: UITextField!
 
+    @IBOutlet weak var timeSelectLabel: UILabel!
+    @IBOutlet weak var timeSelectTextField: UITextField!
+    @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var commentTextView: UITextView!
-    
+    @IBOutlet weak var registerButton: UIButton!
     var pointSelectPickerView: UIPickerView = UIPickerView()
     var timeSelectPickerView: UIPickerView = UIPickerView()
     
@@ -63,6 +66,13 @@ class PointReviewViewController: UIViewController {
         self.timeSelectPickerView.dataSource = self
         self.pointSelectPickerView.tag = 1
         self.timeSelectPickerView.tag = 2
+        
+        self.pointSelectLabel.textColor = UIColor.white
+        self.timeSelectLabel.textColor = UIColor.white
+        self.commentLabel.textColor = UIColor.white
+        self.registerButton.backgroundColor = UIColor.gray
+        self.registerButton.tintColor = UIColor.white
+        self.view.backgroundColor = UIColor.black
     }
     
     override func viewWillAppear(_ animated: Bool) {

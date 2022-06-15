@@ -19,7 +19,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="一度見た作品をピックアップ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bC5-ur-TlW">
                                 <rect key="frame" x="94.5" y="108" width="225.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" systemColor="tintColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4gH-hi-Pa2">
@@ -63,11 +63,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="zaO-CX-OFt">
-                                <rect key="frame" x="0.0" y="44" width="414" height="51"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="51"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0Zd-Av-lAL">
-                                <rect key="frame" x="0.0" y="95" width="414" height="718"/>
+                                <rect key="frame" x="0.0" y="139" width="414" height="757"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LRX-4G-Mmo">
                                     <size key="itemSize" width="128" height="128"/>
@@ -81,19 +81,19 @@
                         <viewLayoutGuide key="safeArea" id="Odb-xS-whp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="zaO-CX-OFt" firstAttribute="leading" secondItem="rXz-9W-tBK" secondAttribute="leading" id="2tl-Kk-gYP"/>
-                            <constraint firstItem="zaO-CX-OFt" firstAttribute="top" secondItem="rXz-9W-tBK" secondAttribute="top" constant="44" id="9tE-lt-Owl"/>
-                            <constraint firstItem="0Zd-Av-lAL" firstAttribute="top" secondItem="zaO-CX-OFt" secondAttribute="bottom" id="CSk-kD-u7y"/>
-                            <constraint firstItem="0Zd-Av-lAL" firstAttribute="leading" secondItem="Odb-xS-whp" secondAttribute="leading" id="JSp-Hd-X4P"/>
-                            <constraint firstAttribute="trailing" secondItem="zaO-CX-OFt" secondAttribute="trailing" id="Uln-KY-8du"/>
-                            <constraint firstItem="0Zd-Av-lAL" firstAttribute="bottom" secondItem="Odb-xS-whp" secondAttribute="bottom" id="YCx-ZY-6Th"/>
-                            <constraint firstItem="0Zd-Av-lAL" firstAttribute="trailing" secondItem="Odb-xS-whp" secondAttribute="trailing" id="rpv-YM-iek"/>
-                            <constraint firstItem="0Zd-Av-lAL" firstAttribute="top" secondItem="zaO-CX-OFt" secondAttribute="bottom" id="wbV-c3-Beq"/>
+                            <constraint firstItem="0Zd-Av-lAL" firstAttribute="trailing" secondItem="Odb-xS-whp" secondAttribute="trailing" id="27R-y6-Q9d"/>
+                            <constraint firstItem="0Zd-Av-lAL" firstAttribute="top" secondItem="zaO-CX-OFt" secondAttribute="bottom" id="KmA-cK-0wh"/>
+                            <constraint firstItem="zaO-CX-OFt" firstAttribute="top" secondItem="Odb-xS-whp" secondAttribute="top" id="LrU-7v-XcQ"/>
+                            <constraint firstItem="zaO-CX-OFt" firstAttribute="trailing" secondItem="Odb-xS-whp" secondAttribute="trailing" id="gix-Ni-BVh"/>
+                            <constraint firstItem="0Zd-Av-lAL" firstAttribute="leading" secondItem="Odb-xS-whp" secondAttribute="leading" id="m9H-B1-yXn"/>
+                            <constraint firstItem="zaO-CX-OFt" firstAttribute="leading" secondItem="Odb-xS-whp" secondAttribute="leading" id="ypt-2r-J77"/>
+                            <constraint firstAttribute="bottom" secondItem="0Zd-Av-lAL" secondAttribute="bottom" id="yqT-qb-Arq"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="gaj-Kq-Ory"/>
                     <connections>
                         <outlet property="collectionView" destination="0Zd-Av-lAL" id="IDN-F8-QA2"/>
+                        <outlet property="searchBar" destination="zaO-CX-OFt" id="omy-Sn-Aow"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jEA-a7-GJ4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -108,7 +108,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eUP-tz-nxF">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="タイトルを入力" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eUP-tz-nxF">
                                 <rect key="frame" x="107" y="188" width="200" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="PTP-ER-cT4"/>
@@ -124,7 +124,7 @@
                                 </constraints>
                                 <color key="tintColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="検索"/>
                                 <connections>
                                     <action selector="searchButton:" destination="xgi-bw-Sr7" eventType="touchUpInside" id="P90-MV-4l3"/>
                                 </connections>
@@ -141,6 +141,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="pSS-1F-csg"/>
                     <connections>
+                        <outlet property="searchButton" destination="WI9-zh-fnh" id="ofM-5c-P76"/>
                         <outlet property="searchTextField" destination="eUP-tz-nxF" id="Mcu-ox-ABf"/>
                     </connections>
                 </viewController>
@@ -324,7 +325,7 @@
                                             </connections>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="mgN-nB-IDi" secondAttribute="bottom" constant="40" id="78r-9U-lyf"/>
                                         <constraint firstItem="mgN-nB-IDi" firstAttribute="centerX" secondItem="OmM-ZK-vcU" secondAttribute="centerX" id="e6c-Se-9hq"/>
@@ -338,7 +339,9 @@
                     <connections>
                         <outlet property="movieImageView" destination="TqV-rF-x5u" id="7lI-wa-LOZ"/>
                         <outlet property="overviewLabel" destination="Y5i-7v-Fcg" id="rAn-HO-wG0"/>
+                        <outlet property="overviewTitle" destination="bVh-yP-tYX" id="iaQ-YH-1oZ"/>
                         <outlet property="pointPickerTextField" destination="HeG-9V-f4R" id="BPO-A9-6l4"/>
+                        <outlet property="registerButton" destination="mgN-nB-IDi" id="ZWV-We-KSv"/>
                         <outlet property="tableView" destination="i7i-s8-SaT" id="uO3-Md-sJ0"/>
                         <outlet property="titleLabel" destination="7Oo-8O-rzx" id="BTF-Rb-5X3"/>
                     </connections>
@@ -384,19 +387,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PWd-YK-nKE">
-                                <rect key="frame" x="0.0" y="265" width="414" height="366"/>
+                                <rect key="frame" x="0.0" y="265" width="414" height="416"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ubh-xN-Jz8">
-                                <rect key="frame" x="180.5" y="631" width="53" height="31"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C8d-6L-J01">
+                                <rect key="frame" x="180.5" y="681" width="53" height="31"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="登録"/>
+                                <buttonConfiguration key="configuration" style="plain" title="登録"/>
                                 <connections>
-                                    <action selector="pointReviewRegisterButton:" destination="KVI-PW-JEg" eventType="touchUpInside" id="VaQ-Gc-gaS"/>
+                                    <action selector="pointReviewRegisterButton:" destination="KVI-PW-JEg" eventType="touchUpInside" id="0tN-s4-z9a"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -406,11 +409,11 @@
                             <constraint firstItem="vZp-qa-RVy" firstAttribute="leading" secondItem="DzM-5h-6O1" secondAttribute="leading" id="687-aL-D3u"/>
                             <constraint firstItem="PWd-YK-nKE" firstAttribute="leading" secondItem="DzM-5h-6O1" secondAttribute="leading" id="E2k-TU-JMi"/>
                             <constraint firstItem="DzM-5h-6O1" firstAttribute="trailing" secondItem="bvo-lk-Yhi" secondAttribute="trailing" id="GcQ-kG-fr4"/>
+                            <constraint firstItem="DzM-5h-6O1" firstAttribute="bottom" secondItem="C8d-6L-J01" secondAttribute="bottom" constant="150" id="I9Z-oL-WNR"/>
                             <constraint firstItem="DzM-5h-6O1" firstAttribute="trailing" secondItem="vZp-qa-RVy" secondAttribute="trailing" id="M4d-i8-ngd"/>
-                            <constraint firstItem="Ubh-xN-Jz8" firstAttribute="top" secondItem="PWd-YK-nKE" secondAttribute="bottom" id="Ntb-7M-fVb"/>
+                            <constraint firstItem="C8d-6L-J01" firstAttribute="top" secondItem="PWd-YK-nKE" secondAttribute="bottom" id="O3s-5S-B56"/>
+                            <constraint firstItem="C8d-6L-J01" firstAttribute="centerX" secondItem="gcF-y0-eWO" secondAttribute="centerX" id="UuA-Aq-beC"/>
                             <constraint firstItem="bvo-lk-Yhi" firstAttribute="top" secondItem="dZ6-YP-VLQ" secondAttribute="bottom" constant="10" id="VQB-MW-mDH"/>
-                            <constraint firstItem="DzM-5h-6O1" firstAttribute="bottom" secondItem="Ubh-xN-Jz8" secondAttribute="bottom" constant="200" id="XHz-f1-DA9"/>
-                            <constraint firstItem="Ubh-xN-Jz8" firstAttribute="centerX" secondItem="gcF-y0-eWO" secondAttribute="centerX" id="avm-6x-tsg"/>
                             <constraint firstItem="Gis-8N-XqE" firstAttribute="leading" secondItem="DzM-5h-6O1" secondAttribute="leading" constant="10" id="g0I-Du-aG2"/>
                             <constraint firstItem="bvo-lk-Yhi" firstAttribute="leading" secondItem="DzM-5h-6O1" secondAttribute="leading" id="gkG-dp-qhc"/>
                             <constraint firstItem="PWd-YK-nKE" firstAttribute="top" secondItem="Gis-8N-XqE" secondAttribute="bottom" constant="10" id="he9-a6-l63"/>
@@ -425,14 +428,18 @@
                     </view>
                     <navigationItem key="navigationItem" id="R2k-Xj-mgp"/>
                     <connections>
+                        <outlet property="commentLabel" destination="Gis-8N-XqE" id="fR2-4H-BRu"/>
                         <outlet property="commentTextView" destination="PWd-YK-nKE" id="fPF-XR-wsF"/>
+                        <outlet property="pointSelectLabel" destination="dZ6-YP-VLQ" id="X50-L8-LeB"/>
                         <outlet property="pointSelectTextField" destination="bvo-lk-Yhi" id="KFP-In-qXV"/>
+                        <outlet property="registerButton" destination="C8d-6L-J01" id="c9n-VH-lUC"/>
+                        <outlet property="timeSelectLabel" destination="gIZ-ot-iOn" id="PYm-M7-r4p"/>
                         <outlet property="timeSelectTextField" destination="vZp-qa-RVy" id="hzZ-83-0Wv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZsL-ic-Uxn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-836" y="2243"/>
+            <point key="canvasLocation" x="-1871" y="2243"/>
         </scene>
         <!--観た映画-->
         <scene sceneID="7rg-a6-5NE">
@@ -483,6 +490,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

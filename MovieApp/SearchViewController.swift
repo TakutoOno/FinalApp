@@ -12,6 +12,7 @@ class SearchViewController: UIViewController {
     
     
     @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var searchButton: UIButton!
     
     var search: MovieModel?
     
@@ -19,6 +20,9 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.black
+        self.searchButton.backgroundColor = UIColor.gray
+        self.searchButton.tintColor = UIColor.white
     }
     
     //MARK: - IBAction

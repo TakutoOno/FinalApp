@@ -11,7 +11,7 @@ import RealmSwift
 class WatchedMovieViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    
+    @IBOutlet weak var searchBar: UISearchBar!
     var realm: Realm? = nil
     
     var registeredMovieInfoList = try? Realm().objects(MovieInfo.self)
@@ -27,6 +27,10 @@ class WatchedMovieViewController: UIViewController {
         
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
+        
+        self.searchBar.delegate = self
+        
+        self.collectionView.backgroundColor = UIColor.black
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,8 +42,28 @@ class WatchedMovieViewController: UIViewController {
        collectionView.collectionViewLayout = layout
 
     }
-    
 }
+
+//MARK: - searchBar
+
+extension WatchedMovieViewController: UISearchBarDelegate {
+    
+func setupSearchBar(){
+    self.searchBar.delegate = self
+}
+func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    guard let searchText = self.searchBar.text else { return }
+    if searchText == "" {
+        registeredMovieInfoList = realm?.objects(MovieInfo.self)
+        return
+    } else {
+        let predicate = NSPredicate(format: "title = %@", searchText)
+        registeredMovieInfoList = realm?.objects(MovieInfo.self).filter(predicate)
+    }
+    collectionView.reloadData()
+}
+}
+
     //MARK: - collectionView
     
 extension WatchedMovieViewController: UICollectionViewDelegate, UICollectionViewDataSource {

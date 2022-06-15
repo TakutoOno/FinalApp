@@ -18,6 +18,8 @@ class MovieCell: UICollectionViewCell {
         let imageURL = URL(string: "https://image.tmdb.org/t/p/w200" + (search.poster_path ?? ""))
         self.imageView.sd_setImage(with: imageURL)
         self.titleLabel.text = search.title
+        self.titleLabel.backgroundColor = UIColor.black
+        self.titleLabel.textColor = UIColor.white
     }
     
     func setMovie(search: MovieInfo) {
@@ -25,5 +27,7 @@ class MovieCell: UICollectionViewCell {
         let imageURL = URL(string: "https://image.tmdb.org/t/p/w200" + (search.poster_path ?? ""))
         self.imageView.sd_setImage(with: imageURL)
         self.titleLabel.text = search.title
+        self.titleLabel.backgroundColor = UIColor.black
+        self.titleLabel.textColor = UIColor.white
     }
 }

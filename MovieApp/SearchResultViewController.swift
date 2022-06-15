@@ -35,14 +35,8 @@ class SearchResultViewController: UIViewController {
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         let layout = UICollectionViewFlowLayout()
-        //                //
-        //        layout.itemSize = CGSize(width: collectionView.frame.width / 4, height: collectionView.frame.height / 6)
-        //     layout.minimumInteritemSpacing =
-        //
         collectionView.collectionViewLayout = layout
-        //        let layout = UICollectionViewFlowLayout()
-        //               layout.itemSize = CGSize(width: 50, height: 100)
-        //               collectionView.collectionViewLayout = layout
+        self.collectionView.backgroundColor = UIColor.black
     }
     
     override func viewWillAppear(_ animated: Bool) {

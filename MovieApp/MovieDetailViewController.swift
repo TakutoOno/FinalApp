@@ -12,11 +12,12 @@ import SDWebImage
 class MovieDetailViewController: UIViewController {
     
     @IBOutlet private weak var movieImageView: UIImageView!
+    @IBOutlet weak var overviewTitle: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
     @IBOutlet weak var pointPickerTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var registerButton: UIButton!
     var realm = try? Realm()
     
     var movie: MovieModel.Result?
@@ -64,6 +65,14 @@ class MovieDetailViewController: UIViewController {
         //カスタムセルを登録する
         let nib: UINib = UINib(nibName: "PointReviewCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "pointReviewCell")
+        
+        self.view.backgroundColor = UIColor.black
+        self.titleLabel.textColor = UIColor.white
+        self.overviewTitle.textColor = UIColor.white
+        self.overviewLabel.textColor = UIColor.white
+        self.tableView.backgroundColor = UIColor.black
+        self.registerButton.backgroundColor = UIColor.gray
+        self.registerButton.tintColor = UIColor.white
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -107,6 +116,18 @@ class MovieDetailViewController: UIViewController {
                     movieInfo.title = movie.title
                     movieInfo.poster_path = movie.poster_path
                     movieInfo.overview = movie.overview
+                    if movie.genre_ids[0] >= 1 {
+                    movieInfo.firstGenreId = movie.genre_ids[0]
+                    }
+                    if movie.genre_ids.count >= 2 {
+                    movieInfo.secondGenreId = movie.genre_ids[1]
+                    }
+                    if movie.genre_ids.count >= 3 {
+                    movieInfo.thirdGenreId = movie.genre_ids[2]
+                    }
+                    if movie.genre_ids.count >= 4{
+                    movieInfo.firstGenreId = movie.genre_ids[3]
+                    }
                 realm.add(movieInfo, update: .modified)
                 }
             }
