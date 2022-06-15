@@ -18,6 +18,8 @@
 		AEDF22F4284DCC5100A08B79 /* PointReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEDF22F2284DCC5100A08B79 /* PointReviewCell.xib */; };
 		AEECF1732855F37E00D802C1 /* RecommendationMovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEECF1712855F37E00D802C1 /* RecommendationMovieCell.swift */; };
 		AEECF1742855F37E00D802C1 /* RecommendationMovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEECF1722855F37E00D802C1 /* RecommendationMovieCell.xib */; };
+		AEECF17D2859AEE300D802C1 /* TopRecommendationMovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEECF17B2859AEE300D802C1 /* TopRecommendationMovieCell.swift */; };
+		AEECF17E2859AEE300D802C1 /* TopRecommendationMovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEECF17C2859AEE300D802C1 /* TopRecommendationMovieCell.xib */; };
 		AEF9B38D2848339000C1A8CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF9B38C2848339000C1A8CA /* AppDelegate.swift */; };
 		AEF9B38F2848339000C1A8CA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF9B38E2848339000C1A8CA /* SceneDelegate.swift */; };
 		AEF9B3962848339200C1A8CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEF9B3952848339200C1A8CA /* Assets.xcassets */; };
@@ -45,6 +47,8 @@
 		AEDF22F2284DCC5100A08B79 /* PointReviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PointReviewCell.xib; sourceTree = "<group>"; };
 		AEECF1712855F37E00D802C1 /* RecommendationMovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationMovieCell.swift; sourceTree = "<group>"; };
 		AEECF1722855F37E00D802C1 /* RecommendationMovieCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendationMovieCell.xib; sourceTree = "<group>"; };
+		AEECF17B2859AEE300D802C1 /* TopRecommendationMovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRecommendationMovieCell.swift; sourceTree = "<group>"; };
+		AEECF17C2859AEE300D802C1 /* TopRecommendationMovieCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopRecommendationMovieCell.xib; sourceTree = "<group>"; };
 		AEF9B3892848339000C1A8CA /* MovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEF9B38C2848339000C1A8CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AEF9B38E2848339000C1A8CA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +108,8 @@
 				AEDF22E92849C8B900A08B79 /* PointReviewViewController.swift */,
 				AEDF22ED2849EACC00A08B79 /* MovieCell.swift */,
 				AEDF22EB2849E8EA00A08B79 /* MovieCell.xib */,
+				AEECF17B2859AEE300D802C1 /* TopRecommendationMovieCell.swift */,
+				AEECF17C2859AEE300D802C1 /* TopRecommendationMovieCell.xib */,
 				AEECF1712855F37E00D802C1 /* RecommendationMovieCell.swift */,
 				AEECF1722855F37E00D802C1 /* RecommendationMovieCell.xib */,
 				AEDF22F1284DCC5100A08B79 /* PointReviewCell.swift */,
@@ -202,6 +208,7 @@
 				AEDF22EC2849E8EA00A08B79 /* MovieCell.xib in Resources */,
 				AEDF22F4284DCC5100A08B79 /* PointReviewCell.xib in Resources */,
 				AEF9B3962848339200C1A8CA /* Assets.xcassets in Resources */,
+				AEECF17E2859AEE300D802C1 /* TopRecommendationMovieCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +267,7 @@
 				AEECF1732855F37E00D802C1 /* RecommendationMovieCell.swift in Sources */,
 				AEF9B38D2848339000C1A8CA /* AppDelegate.swift in Sources */,
 				AEDF22E62849A8C400A08B79 /* SearchResultViewController.swift in Sources */,
+				AEECF17D2859AEE300D802C1 /* TopRecommendationMovieCell.swift in Sources */,
 				AEF9B3A528487D4800C1A8CA /* APIInfo.swift in Sources */,
 				AEF9B3BB28488CE200C1A8CA /* TabBarController.swift in Sources */,
 				AEF9B3A32848772000C1A8CA /* MovieModel.swift in Sources */,

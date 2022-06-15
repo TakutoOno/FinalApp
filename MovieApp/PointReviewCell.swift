@@ -28,9 +28,17 @@ class PointReviewCell: UITableViewCell {
         self.pointLabel.text = pointReview.point
         self.timeLabel.text = pointReview.time
         self.commentLabel.text = pointReview.comment
+        
         self.pointLabel.textColor = UIColor.white
+        self.pointLabel.backgroundColor = UIColor.blue
         self.timeLabel.textColor = UIColor.white
+        self.timeLabel.backgroundColor = UIColor.blue
         self.commentLabel.textColor = UIColor.white
+        self.commentLabel.layer.borderColor = UIColor.blue.cgColor
+        self.commentLabel.layer.borderWidth = 1
+        self.commentLabel.layer.cornerRadius = 5
+        self.layer.masksToBounds = true
+        
         self.contentView.backgroundColor = UIColor.black
     }
 }

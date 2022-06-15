@@ -12,8 +12,10 @@ import RealmSwift
 class RecommendationViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var actionCollectionView: UICollectionView!
     
+    @IBOutlet weak var topLabel: UILabel!
+    @IBOutlet weak var actionCollectionView: UICollectionView!
+    @IBOutlet weak var actionLabel: UILabel!
     var realm: Realm? = nil
     
     var registeredMovieInfoList = try! Realm().objects(MovieInfo.self)
@@ -31,8 +33,9 @@ class RecommendationViewController: UIViewController {
         realm = try? Realm()
         
         let nib = UINib(nibName: "RecommendationMovieCell", bundle: nil)
-        self.collectionView.register(nib, forCellWithReuseIdentifier: "RecommendationMovieCell")
         self.actionCollectionView.register(nib, forCellWithReuseIdentifier: "RecommendationMovieCell")
+        let nibTwo = UINib(nibName: "TopRecommendationMovieCell", bundle: nil)
+        self.collectionView.register(nibTwo, forCellWithReuseIdentifier: "TopRecommendationMovieCell")
         
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
@@ -42,7 +45,10 @@ class RecommendationViewController: UIViewController {
         self.actionCollectionView.tag = 2
         
         view.backgroundColor = UIColor.black
+        topLabel.textColor = UIColor.white
         collectionView.backgroundColor = UIColor.black
+        actionLabel.textColor = UIColor.white
+        actionCollectionView.backgroundColor = UIColor.black
         
         
     }
@@ -64,6 +70,7 @@ extension RecommendationViewController: UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //      10以上なら１０　１０以下ならカウント
         if collectionView.tag == 1 {
+            print(random)
             if random.count >= 10 {
                 return 10
             } else {
@@ -80,14 +87,16 @@ extension RecommendationViewController: UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendationMovieCell", for: indexPath) as! RecommendationMovieCell
         //    guard let registeredMovieInfoList = registeredMovieInfoList else { return cell}
         if collectionView.tag == 1 {
-            cell.setMovie(search: random[indexPath.row])
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TopRecommendationMovieCell", for: indexPath) as! TopRecommendationMovieCell
+            cell.setTopMovie(search: random[indexPath.row])
+            return cell
         } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendationMovieCell", for: indexPath) as! RecommendationMovieCell
             cell.setMovie(search: randomAction[indexPath.row])
+            return cell
         }
-        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

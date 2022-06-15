@@ -9,8 +9,9 @@ import UIKit
 import SDWebImage
 
 class RecommendationMovieCell: UICollectionViewCell {
-
+    
     @IBOutlet weak var imageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,5 +22,4 @@ class RecommendationMovieCell: UICollectionViewCell {
         let imageURL = URL(string: "https://image.tmdb.org/t/p/w200" + (search.poster_path ?? ""))
         self.imageView.sd_setImage(with: imageURL)
     }
-
 }
