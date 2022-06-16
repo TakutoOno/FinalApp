@@ -126,7 +126,7 @@ class MovieDetailViewController: UIViewController {
                     movieInfo.thirdGenreId = movie.genre_ids[2]
                     }
                     if movie.genre_ids.count >= 4{
-                    movieInfo.firstGenreId = movie.genre_ids[3]
+                    movieInfo.forthGenreId = movie.genre_ids[3]
                     }
                 realm.add(movieInfo, update: .modified)
                 }
