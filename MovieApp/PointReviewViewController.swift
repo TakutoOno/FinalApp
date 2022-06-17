@@ -7,17 +7,18 @@
 
 import UIKit
 import RealmSwift
+import SVProgressHUD
 
 class PointReviewViewController: UIViewController {
     
     @IBOutlet weak var pointSelectLabel: UILabel!
     @IBOutlet weak var pointSelectTextField: UITextField!
-
     @IBOutlet weak var timeSelectLabel: UILabel!
     @IBOutlet weak var timeSelectTextField: UITextField!
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var registerButton: UIButton!
+    
     var pointSelectPickerView: UIPickerView = UIPickerView()
     var timeSelectPickerView: UIPickerView = UIPickerView()
     
@@ -45,6 +46,8 @@ class PointReviewViewController: UIViewController {
         "結"
     ]
     
+//MARK: - LifeCycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,13 +56,15 @@ class PointReviewViewController: UIViewController {
         
         let toolbar = UIToolbar()
         let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(MovieDetailViewController.tappedDone))
+        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(PointReviewViewController.tappedDone))
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(PointReviewViewController.cancelPicker))
         toolbar.items = [cancelButton, space, doneButton]
         toolbar.sizeToFit()
         self.pointSelectTextField.inputAccessoryView = toolbar
         self.timeSelectTextField.inputAccessoryView = toolbar
         
+        self.pointSelectTextField.delegate = self
+        self.timeSelectTextField.delegate = self
         self.pointSelectPickerView.delegate = self
         self.pointSelectPickerView.dataSource = self
         self.timeSelectPickerView.delegate = self
@@ -70,8 +75,9 @@ class PointReviewViewController: UIViewController {
         self.pointSelectLabel.textColor = UIColor.white
         self.timeSelectLabel.textColor = UIColor.white
         self.commentLabel.textColor = UIColor.white
-        self.registerButton.backgroundColor = UIColor.gray
-        self.registerButton.tintColor = UIColor.white
+        self.registerButton.backgroundColor = UIColor(hex: "eeff1f", alpha: 1.0)
+        self.registerButton.layer.cornerRadius = 10
+        self.registerButton.tintColor = UIColor.black
         self.view.backgroundColor = UIColor.black
     }
     
@@ -84,7 +90,13 @@ class PointReviewViewController: UIViewController {
         commentTextView.text = ""
     }
     
+//MARK: - IBAction
+    
     @IBAction func pointReviewRegisterButton(_ sender: Any) {
+        if pointSelectTextField.text == "" || timeSelectTextField.text == "" || commentTextView.text == "" {
+         //   SVProgressHUD.showError(withStatus: "全て入力して下さい")
+            return
+        }
         if let realm = try? Realm() {
             guard let movieInfo = movieInfo else { return }
             let pointReview = PointReview()
@@ -93,7 +105,7 @@ class PointReviewViewController: UIViewController {
                     pointReview.point = self.pointSelectTextField.text!
                     pointReview.time = self.timeSelectTextField.text!
                     pointReview.comment = self.commentTextView.text!
-     //               realm.add(pointReview)
+                    //               realm.add(pointReview)
                     movieInfo.pointReviewList.append(pointReview)
                 }
             } catch {
@@ -152,5 +164,13 @@ extension PointReviewViewController: UIPickerViewDelegate, UIPickerViewDataSourc
     }
     @objc func cancelPicker(){
         view.endEditing(true)
+    }
+}
+
+//MARK: - TextField
+
+extension PointReviewViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return false
     }
 }

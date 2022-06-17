@@ -10,4 +10,5 @@ target 'MovieApp' do
   pod 'RealmSwift'
   pod 'SDWebImage'
   pod 'TTTAttributedLabel'
+  pod 'SVProgressHUD', '2.2.5'
 end

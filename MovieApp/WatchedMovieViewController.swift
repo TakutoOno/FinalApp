@@ -27,10 +27,14 @@ class WatchedMovieViewController: UIViewController {
         
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
-        
         self.searchBar.delegate = self
         
+        self.view.backgroundColor = UIColor.black
         self.collectionView.backgroundColor = UIColor.black
+     //   self.searchBar.backgroundColor = UIColor.black
+        self.searchBar.backgroundImage = UIImage()
+        self.searchBar.barTintColor = .clear
+        self.searchBar.searchTextField.backgroundColor = .white
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,9 +59,8 @@ func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
     guard let searchText = self.searchBar.text else { return }
     if searchText == "" {
         registeredMovieInfoList = realm?.objects(MovieInfo.self)
-        return
     } else {
-        let predicate = NSPredicate(format: "title = %@", searchText)
+        let predicate = NSPredicate(format: "title CONTAINS %@", searchText)
         registeredMovieInfoList = realm?.objects(MovieInfo.self).filter(predicate)
     }
     collectionView.reloadData()

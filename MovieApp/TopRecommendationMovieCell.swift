@@ -23,10 +23,18 @@ class TopRecommendationMovieCell: UICollectionViewCell {
         self.topImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
         let imageURL = URL(string: "https://image.tmdb.org/t/p/w200" + (search.poster_path ?? ""))
         self.topImageView.sd_setImage(with: imageURL)
-        var a = search.pointReviewList.randomElement()
-        self.topPointLabel.text = a?.point
-        self.topCommentLabel.text = a?.comment
+        if search.pointReviewList.count >= 1 {
+        let random = search.pointReviewList.randomElement()
+        self.topPointLabel.text = random?.point
+        self.topCommentLabel.text = random?.comment
+        } else {
+            self.topPointLabel.text = "-"
+            self.topCommentLabel.text = "レビューなし"
+        }
         self.topPointLabel.textColor = UIColor.white
         self.topCommentLabel.textColor = UIColor.white
+        self.topCommentLabel.layer.borderColor = UIColor(hex: "eeff1f", alpha: 1.0).cgColor
+        self.topCommentLabel.layer.borderWidth = 1
+        self.topCommentLabel.layer.cornerRadius = 10
     }
 }

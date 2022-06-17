@@ -7,6 +7,7 @@
 
 import UIKit
 import Foundation
+import SVProgressHUD
 
 class SearchViewController: UIViewController {
     
@@ -21,13 +22,15 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.black
-        self.searchButton.backgroundColor = UIColor.gray
-        self.searchButton.tintColor = UIColor.white
+        self.searchButton.backgroundColor = UIColor(hex: "eeff1f", alpha: 1.0)
+        self.searchButton.tintColor = UIColor.black
+        self.searchButton.layer.cornerRadius = 10
     }
     
     //MARK: - IBAction
     
     @IBAction func searchButton(_ sender: Any) {
+        
         
         let searchResultViewController = self.storyboard?.instantiateViewController(withIdentifier: "goToSearchResult") as! SearchResultViewController
         searchResultViewController.searchText = searchTextField.text

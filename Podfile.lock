@@ -12,12 +12,14 @@ PODS:
   - SDWebImage (5.12.5):
     - SDWebImage/Core (= 5.12.5)
   - SDWebImage/Core (5.12.5)
+  - SVProgressHUD (2.2.5)
   - TTTAttributedLabel (2.0.0)
 
 DEPENDENCIES:
   - Moya (~> 15.0)
   - RealmSwift
   - SDWebImage
+  - SVProgressHUD (= 2.2.5)
   - TTTAttributedLabel
 
 SPEC REPOS:
@@ -27,6 +29,7 @@ SPEC REPOS:
     - Realm
     - RealmSwift
     - SDWebImage
+    - SVProgressHUD
     - TTTAttributedLabel
 
 SPEC CHECKSUMS:
@@ -35,8 +38,9 @@ SPEC CHECKSUMS:
   Realm: 97bc2540088e1e88a4b2051ba4b8eac85be0039a
   RealmSwift: 1bc3cbcb1681c5a9262df5883280123aa2d1d4cf
   SDWebImage: 0905f1b7760fc8ac4198cae0036600d67478751e
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
 
-PODFILE CHECKSUM: 50468492774c8ba98e6b0d611ef0d0220fb6f703
+PODFILE CHECKSUM: 24ee4b3d258b1f2ecc5dc9ef49dee5b911f6ceae
 
 COCOAPODS: 1.11.3

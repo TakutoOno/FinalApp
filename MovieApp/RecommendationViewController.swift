@@ -74,15 +74,15 @@ class RecommendationViewController: UIViewController {
         self.fourGenreCollectionView.tag = 4
         
         view.backgroundColor = UIColor.black
-        topLabel.textColor = UIColor.white
+        topLabel.textColor = UIColor(hex: "eeff1f", alpha: 1.0)
         collectionView.backgroundColor = UIColor.black
-        oneGenreLabel.textColor = UIColor.white
+        oneGenreLabel.textColor = UIColor(hex: "eeff1f", alpha: 1.0)
         oneGenreCollectionView.backgroundColor = UIColor.black
-        twoGenreLabel.textColor = UIColor.white
+        twoGenreLabel.textColor = UIColor(hex: "eeff1f", alpha: 1.0)
         twoGenreCollectionView.backgroundColor = UIColor.black
-        threeGenreLabel.textColor = UIColor.white
+        threeGenreLabel.textColor = UIColor(hex: "eeff1f", alpha: 1.0)
         threeGenreCollectionView.backgroundColor = UIColor.black
-        fourGenreLabel.textColor = UIColor.white
+        fourGenreLabel.textColor = UIColor(hex: "eeff1f", alpha: 1.0)
         fourGenreCollectionView.backgroundColor = UIColor.black
         
         let oneGenreNumber = genreNumber.randomElement()!
@@ -113,6 +113,11 @@ class RecommendationViewController: UIViewController {
         fourGenreLabel.text = fourGenreName
         fourGenreMovieInfoList = try! Realm().objects(MovieInfo.self).filter("firstGenreId = %@ || secondGenreId = %@ || thirdGenreId = %@ || forthGenreId = %@", fourGenreNumber, fourGenreNumber, fourGenreNumber, fourGenreNumber)
         
+        random = Array(registeredMovieInfoList).shuffled()
+        randomOneGenre = Array(oneGenreMovieInfoList).shuffled()
+        randomTwoGenre = Array(twoGenreMovieInfoList).shuffled()
+        randomThreeGenre = Array(threeGenreMovieInfoList).shuffled()
+        randomFourGenre = Array(fourGenreMovieInfoList).shuffled()
         
         collectionView.reloadData()
         oneGenreCollectionView.reloadData()
@@ -123,12 +128,6 @@ class RecommendationViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        random = Array(registeredMovieInfoList).shuffled()
-        randomOneGenre = Array(oneGenreMovieInfoList).shuffled()
-        randomTwoGenre = Array(twoGenreMovieInfoList).shuffled()
-        randomThreeGenre = Array(threeGenreMovieInfoList).shuffled()
-        randomFourGenre = Array(fourGenreMovieInfoList).shuffled()
-    
     }
 }
 //MARK: - collectionView

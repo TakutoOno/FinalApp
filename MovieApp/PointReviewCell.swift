@@ -11,6 +11,7 @@ class PointReviewCell: UITableViewCell {
 
     @IBOutlet weak var pointLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var timeLabelView: UIView!
     @IBOutlet weak var commentLabel: UILabel!
     
     override func awakeFromNib() {
@@ -29,16 +30,26 @@ class PointReviewCell: UITableViewCell {
         self.timeLabel.text = pointReview.time
         self.commentLabel.text = pointReview.comment
         
-        self.pointLabel.textColor = UIColor.white
-        self.pointLabel.backgroundColor = UIColor.blue
-        self.timeLabel.textColor = UIColor.white
-        self.timeLabel.backgroundColor = UIColor.blue
-        self.commentLabel.textColor = UIColor.white
-        self.commentLabel.layer.borderColor = UIColor.blue.cgColor
-        self.commentLabel.layer.borderWidth = 1
-        self.commentLabel.layer.cornerRadius = 5
-        self.layer.masksToBounds = true
+        switch timeLabel.text {
+        case "起" :
+            self.timeLabel.textColor = UIColor.red
+        case "承":
+            self.timeLabel.textColor = UIColor.white
+        case "転":
+            self.timeLabel.textColor = UIColor(hex: "11b0e9", alpha: 1.0)
+        case "結":
+            self.timeLabel.textColor = UIColor.yellow
+        default:
+            self.timeLabel.textColor = UIColor.black
+        }
         
+        self.pointLabel.textColor = UIColor.white
+        self.timeLabelView.layer.borderColor = UIColor(hex: "eeff1f", alpha: 1.0).cgColor
+        self.timeLabelView.layer.borderWidth = 2
+        self.timeLabelView.layer.cornerRadius = 10
+        self.timeLabel.layer.cornerRadius = 10
+        self.timeLabel.clipsToBounds = true
+        self.commentLabel.textColor = UIColor.white
         self.contentView.backgroundColor = UIColor.black
     }
 }

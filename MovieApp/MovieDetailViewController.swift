@@ -15,9 +15,12 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var overviewTitle: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
-    @IBOutlet weak var pointPickerTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var pointReviewPulsButton: UIButton!
+    @IBOutlet weak var headerView: UIView!
+    
+    @IBOutlet weak var borderLabel: UILabel!
     var realm = try? Realm()
     
     var movie: MovieModel.Result?
@@ -44,21 +47,6 @@ class MovieDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-   //     realm = try? Realm()
-        
-        self.pointPickerTextField.inputView = pickerView
-        
-        let toolbar = UIToolbar()
-        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(MovieDetailViewController.tappedDone))
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(MovieDetailViewController.cancelPicker))
-        toolbar.items = [cancelButton, space, doneButton]
-        toolbar.sizeToFit()
-        self.pointPickerTextField.inputAccessoryView = toolbar
-        
-        self.pickerView.delegate = self
-        self.pickerView.dataSource = self
-        
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
@@ -66,13 +54,23 @@ class MovieDetailViewController: UIViewController {
         let nib: UINib = UINib(nibName: "PointReviewCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "pointReviewCell")
         
+        tableView.separatorColor = .yellow
+        
         self.view.backgroundColor = UIColor.black
         self.titleLabel.textColor = UIColor.white
         self.overviewTitle.textColor = UIColor.white
         self.overviewLabel.textColor = UIColor.white
         self.tableView.backgroundColor = UIColor.black
-        self.registerButton.backgroundColor = UIColor.gray
-        self.registerButton.tintColor = UIColor.white
+        //   self.pointReviewPulsButton.backgroundColor = UIColor.gray
+        self.borderLabel.layer.borderColor = UIColor(hex: "eeff1f", alpha: 1.0).cgColor
+        self.borderLabel.layer.borderWidth = 1
+        self.pointReviewPulsButton.backgroundColor = UIColor(hex: "eeff1f", alpha: 1.0)
+        self.pointReviewPulsButton.layer.cornerRadius = 10
+        self.pointReviewPulsButton.tintColor = UIColor.black
+        self.registerButton.backgroundColor = UIColor(hex: "eeff1f", alpha: 1.0)
+        self.registerButton.tintColor = UIColor.black
+        self.registerButton.layer.cornerRadius = 10
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -95,6 +93,22 @@ class MovieDetailViewController: UIViewController {
         self.tableView.reloadData()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if let headerView = tableView.tableHeaderView {
+            
+            let height = headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+            var headerFrame = headerView.frame
+            
+            //Comparison necessary to avoid infinite loop
+            if height != headerFrame.size.height {
+                headerFrame.size.height = height
+                headerView.frame = headerFrame
+                tableView.tableHeaderView = headerView
+            }
+        }
+    }
+    
     // MARK: - IBAction
     
     @IBAction private func pointPlusButton(_ sender: Any) {
@@ -108,29 +122,29 @@ class MovieDetailViewController: UIViewController {
     
     @IBAction func MoviePlusButton(_ sender: Any) {
         guard let realm = realm, let movieInfo = movieInfo else { return }
-            try? realm.write {
-                if let movie = movie {
-                    if  movieInfo.id == 0 {
+        try? realm.write {
+            if let movie = movie {
+                if  movieInfo.id == 0 {
                     movieInfo.id = movie.id
-                    }
-                    movieInfo.title = movie.title
-                    movieInfo.poster_path = movie.poster_path
-                    movieInfo.overview = movie.overview
-                    if movie.genre_ids[0] >= 1 {
-                    movieInfo.firstGenreId = movie.genre_ids[0]
-                    }
-                    if movie.genre_ids.count >= 2 {
-                    movieInfo.secondGenreId = movie.genre_ids[1]
-                    }
-                    if movie.genre_ids.count >= 3 {
-                    movieInfo.thirdGenreId = movie.genre_ids[2]
-                    }
-                    if movie.genre_ids.count >= 4{
-                    movieInfo.forthGenreId = movie.genre_ids[3]
-                    }
-                realm.add(movieInfo, update: .modified)
                 }
+                movieInfo.title = movie.title
+                movieInfo.poster_path = movie.poster_path
+                movieInfo.overview = movie.overview
+                if movie.genre_ids[0] >= 1 {
+                    movieInfo.firstGenreId = movie.genre_ids[0]
+                }
+                if movie.genre_ids.count >= 2 {
+                    movieInfo.secondGenreId = movie.genre_ids[1]
+                }
+                if movie.genre_ids.count >= 3 {
+                    movieInfo.thirdGenreId = movie.genre_ids[2]
+                }
+                if movie.genre_ids.count >= 4{
+                    movieInfo.forthGenreId = movie.genre_ids[3]
+                }
+                realm.add(movieInfo, update: .modified)
             }
+        }
         self.navigationController?.popViewController(animated: true)
     }
 }
@@ -154,43 +168,11 @@ extension MovieDetailViewController:UITableViewDataSource, UITableViewDelegate{
         if(editingStyle == UITableViewCell.EditingStyle.delete) {
             // Realm内のデータを削除
             guard let realm = realm, let movieInfo = movieInfo else { return }
-                try? realm.write {
-                    realm.delete(movieInfo.pointReviewList[indexPath.row])
-                }
-                tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
+            try? realm.write {
+                realm.delete(movieInfo.pointReviewList[indexPath.row])
+            }
+            tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
         }
-    }
-}
-
-//MARK: - UIPickerView
-
-extension MovieDetailViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        // 表示する列数
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        // アイテム表示個数を返す
-        return self.pointList.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        // 表示する文字列を返す
-        return self.pointList[row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.pickerRow = row
-    }
-    
-    @objc func tappedDone(){
-        self.pointPickerTextField.text = self.pointList[self.pickerRow]
-        self.pointPickerTextField.resignFirstResponder()
-    }
-    
-    @objc func cancelPicker(){
-        view.endEditing(true)
     }
 }
 

@@ -13,7 +13,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         super.viewDidLoad()
 
         // タブアイコンの色
-        self.tabBar.tintColor = UIColor.white
+        self.tabBar.tintColor = UIColor(hex: "eeff1f", alpha: 1.0)
         // タブバーの背景色を設定
         let appearance = UITabBarAppearance()
         appearance.backgroundColor =  UIColor.black
