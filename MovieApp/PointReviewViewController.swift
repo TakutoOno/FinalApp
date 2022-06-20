@@ -87,13 +87,13 @@ class PointReviewViewController: UIViewController {
         self.pointSelectPickerView.reloadAllComponents()
         self.timeSelectPickerView.reloadAllComponents()
         
-        commentTextView.text = ""
+        self.commentTextView.text = ""
     }
     
 //MARK: - IBAction
     
     @IBAction func pointReviewRegisterButton(_ sender: Any) {
-        if pointSelectTextField.text == "" || timeSelectTextField.text == "" || commentTextView.text == "" {
+        if self.pointSelectTextField.text == "" || self.timeSelectTextField.text == "" || self.commentTextView.text == "" {
          //   SVProgressHUD.showError(withStatus: "全て入力して下さい")
             return
         }

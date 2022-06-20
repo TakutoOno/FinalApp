@@ -19,26 +19,13 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var pointReviewPulsButton: UIButton!
     @IBOutlet weak var headerView: UIView!
-    
     @IBOutlet weak var borderLabel: UILabel!
+    
     var realm = try? Realm()
     
     var movie: MovieModel.Result?
     
     var movieInfo: MovieInfo?
-    
-    var pickerView: UIPickerView = UIPickerView()
-    
-    var pointArray: [String] = []
-    
-    var pickerRow: Int = 0
-    
-    let pointList: [String] = [
-        "鳥肌ポイント",
-        "感動ポイント",
-        "役者ポイント",
-        "惜しいポイント"
-    ]
     
     var imageURL: URL?
     
@@ -61,7 +48,6 @@ class MovieDetailViewController: UIViewController {
         self.overviewTitle.textColor = UIColor.white
         self.overviewLabel.textColor = UIColor.white
         self.tableView.backgroundColor = UIColor.black
-        //   self.pointReviewPulsButton.backgroundColor = UIColor.gray
         self.borderLabel.layer.borderColor = UIColor(hex: "eeff1f", alpha: 1.0).cgColor
         self.borderLabel.layer.borderWidth = 1
         self.pointReviewPulsButton.backgroundColor = UIColor(hex: "eeff1f", alpha: 1.0)
@@ -70,7 +56,6 @@ class MovieDetailViewController: UIViewController {
         self.registerButton.backgroundColor = UIColor(hex: "eeff1f", alpha: 1.0)
         self.registerButton.tintColor = UIColor.black
         self.registerButton.layer.cornerRadius = 10
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,24 +63,23 @@ class MovieDetailViewController: UIViewController {
         guard let movieInfo = movieInfo else { return }
         if let movie = movie {
             self.movieImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
-            imageURL = URL(string: "https://image.tmdb.org/t/p/w200" + (movie.poster_path ?? ""))
-            self.movieImageView.sd_setImage(with: imageURL)
+            self.imageURL = URL(string: "https://image.tmdb.org/t/p/w200" + (movie.poster_path ?? ""))
+            self.movieImageView.sd_setImage(with: self.imageURL)
             self.titleLabel.text = movie.title
             self.overviewLabel.text = movie.overview
         } else {
             self.movieImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
-            imageURL = URL(string: "https://image.tmdb.org/t/p/w200" + (movieInfo.poster_path ?? ""))
-            self.movieImageView.sd_setImage(with: imageURL)
+            self.imageURL = URL(string: "https://image.tmdb.org/t/p/w200" + (movieInfo.poster_path ?? ""))
+            self.movieImageView.sd_setImage(with: self.imageURL)
             self.titleLabel.text = movieInfo.title
             self.overviewLabel.text = movieInfo.overview
         }
-        self.pickerView.reloadAllComponents()
         self.tableView.reloadData()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        if let headerView = tableView.tableHeaderView {
+        if let headerView = self.tableView.tableHeaderView {
             
             let height = headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
             var headerFrame = headerView.frame
@@ -104,7 +88,7 @@ class MovieDetailViewController: UIViewController {
             if height != headerFrame.size.height {
                 headerFrame.size.height = height
                 headerView.frame = headerFrame
-                tableView.tableHeaderView = headerView
+                self.tableView.tableHeaderView = headerView
             }
         }
     }
@@ -153,13 +137,13 @@ class MovieDetailViewController: UIViewController {
 
 extension MovieDetailViewController:UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movieInfo?.pointReviewList.count ?? 0
+        return self.movieInfo?.pointReviewList.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //セルを取得してデータを設定する
         let cell: PointReviewCell = tableView.dequeueReusableCell(withIdentifier: "pointReviewCell", for: indexPath) as! PointReviewCell
-        guard let movieInfo = movieInfo else { return cell }
+        guard let movieInfo = self.movieInfo else { return cell }
         cell.setPointReview(movieInfo.pointReviewList[indexPath.row])
         return cell
     }
@@ -167,7 +151,7 @@ extension MovieDetailViewController:UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath){
         if(editingStyle == UITableViewCell.EditingStyle.delete) {
             // Realm内のデータを削除
-            guard let realm = realm, let movieInfo = movieInfo else { return }
+            guard let realm = realm, let movieInfo = self.movieInfo else { return }
             try? realm.write {
                 realm.delete(movieInfo.pointReviewList[indexPath.row])
             }
@@ -175,4 +159,3 @@ extension MovieDetailViewController:UITableViewDataSource, UITableViewDelegate{
         }
     }
 }
-

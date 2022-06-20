@@ -35,7 +35,7 @@ class SearchResultViewController: UIViewController {
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         let layout = UICollectionViewFlowLayout()
-        collectionView.collectionViewLayout = layout
+        self.collectionView.collectionViewLayout = layout
         self.collectionView.backgroundColor = UIColor.black
     }
     
@@ -48,7 +48,6 @@ class SearchResultViewController: UIViewController {
                 case .success(let response):
                     let data = response.data
                     self.search = try! JSONDecoder().decode(MovieModel.self, from: data)
-        //            guard let search = self.search else { return }
                     self.movieArray = self.search.results
                     self.collectionView.reloadData()
                     print(self.movieArray)
@@ -64,24 +63,20 @@ class SearchResultViewController: UIViewController {
 
 extension SearchResultViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return movieArray.count
+        return self.movieArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell", for: indexPath) as! MovieCell
-        cell.setMovie(search: movieArray[indexPath.row])
+        cell.setMovie(search: self.movieArray[indexPath.row])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let realm = realm else { return }
-        let movie = movieArray[indexPath.row]
+        let movie = self.movieArray[indexPath.row]
         let movieDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "goToMovieDetail") as! MovieDetailViewController
-        //movie.idに一致するidがあるかをfilterで検索する
-        //あればそのオブジェクトを渡す
-        //nullになれば空のオブジェクトを渡す
         var movieInfo = realm.object(ofType: MovieInfo.self, forPrimaryKey: movie.id)
-    //    let registeredMovie = realm.objects(MovieInfo.self).filter("id = %@", movie.id)
         if movieInfo == nil {
              movieInfo = MovieInfo()
         }

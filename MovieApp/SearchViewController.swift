@@ -11,7 +11,6 @@ import SVProgressHUD
 
 class SearchViewController: UIViewController {
     
-    
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var searchButton: UIButton!
     
@@ -30,11 +29,12 @@ class SearchViewController: UIViewController {
     //MARK: - IBAction
     
     @IBAction func searchButton(_ sender: Any) {
-        
+        if searchTextField.text == "" {
+            return
+        }
         
         let searchResultViewController = self.storyboard?.instantiateViewController(withIdentifier: "goToSearchResult") as! SearchResultViewController
         searchResultViewController.searchText = searchTextField.text
         self.navigationController?.pushViewController(searchResultViewController, animated: true)
     }
 }
-

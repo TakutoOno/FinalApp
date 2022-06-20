@@ -7,24 +7,6 @@
 
 import Foundation
 
-//struct MovieModel: Codable {
-//    let results: [Result]
-//}
-//    struct Result: Codable {
-//        let posterPath: String?
-//        let id: Int
-//        let overview: String
-//        let title: String
-//
-//        enum CodingKeys: String, CodingKey {
-//            case posterPath = "poster_path"
-//            case id = "id"
-//            case overview = "overview"
-//            case title = "title"
-//        }
-//    }
-
-
 struct MovieModel: Decodable {
     var page: Int
     var results: [Result]
@@ -47,4 +29,3 @@ struct MovieModel: Decodable {
     var total_results: Int
     var total_pages: Int
 }
-

@@ -205,7 +205,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="zaO-CX-OFt">
+                            <searchBar contentMode="redraw" placeholder="タイトル入力で絞り込み" translatesAutoresizingMaskIntoConstraints="NO" id="zaO-CX-OFt">
                                 <rect key="frame" x="0.0" y="88" width="414" height="51"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -252,7 +252,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="タイトルを入力" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eUP-tz-nxF">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="タイトルを入力して探す" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eUP-tz-nxF">
                                 <rect key="frame" x="107" y="188" width="200" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="PTP-ER-cT4"/>
@@ -273,13 +273,22 @@
                                     <action selector="searchButton:" destination="xgi-bw-Sr7" eventType="touchUpInside" id="P90-MV-4l3"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新しい映画を探す" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cI7-jl-XWY">
+                                <rect key="frame" x="0.0" y="98" width="414" height="42"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lbL-5f-Isk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="cI7-jl-XWY" firstAttribute="top" secondItem="lbL-5f-Isk" secondAttribute="top" constant="10" id="6RE-A0-m5w"/>
                             <constraint firstItem="WI9-zh-fnh" firstAttribute="centerX" secondItem="AzQ-UV-kJf" secondAttribute="centerX" id="ESF-hU-gdW"/>
+                            <constraint firstItem="lbL-5f-Isk" firstAttribute="trailing" secondItem="cI7-jl-XWY" secondAttribute="trailing" id="af5-sA-06l"/>
                             <constraint firstItem="WI9-zh-fnh" firstAttribute="top" secondItem="eUP-tz-nxF" secondAttribute="bottom" constant="200" id="bCj-nD-XB6"/>
                             <constraint firstItem="eUP-tz-nxF" firstAttribute="top" secondItem="lbL-5f-Isk" secondAttribute="top" constant="100" id="bxv-fQ-1u6"/>
+                            <constraint firstItem="cI7-jl-XWY" firstAttribute="leading" secondItem="lbL-5f-Isk" secondAttribute="leading" id="fHk-48-kJg"/>
                             <constraint firstItem="eUP-tz-nxF" firstAttribute="centerX" secondItem="AzQ-UV-kJf" secondAttribute="centerX" id="gmP-sg-hD2"/>
                         </constraints>
                     </view>

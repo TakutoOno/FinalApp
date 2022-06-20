@@ -26,7 +26,6 @@ class MovieInfo: Object {
     
     @objc dynamic var forthGenreId: Int = 0
     
-    
     override static func primaryKey() -> String? {
         return "id"
     }
@@ -36,8 +35,6 @@ class MovieInfo: Object {
 }
 
 class PointReview: Object {
-    
-   // @objc dynamic var id: Int = 0
     
     @objc dynamic var movieInfoId: Int = 0
     

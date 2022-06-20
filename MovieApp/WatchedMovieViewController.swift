@@ -12,11 +12,12 @@ class WatchedMovieViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
+    
     var realm: Realm? = nil
     
     var registeredMovieInfoList = try? Realm().objects(MovieInfo.self)
     
-//MARK: - LifeCycle
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,7 +32,6 @@ class WatchedMovieViewController: UIViewController {
         
         self.view.backgroundColor = UIColor.black
         self.collectionView.backgroundColor = UIColor.black
-     //   self.searchBar.backgroundColor = UIColor.black
         self.searchBar.backgroundImage = UIImage()
         self.searchBar.barTintColor = .clear
         self.searchBar.searchTextField.backgroundColor = .white
@@ -40,11 +40,11 @@ class WatchedMovieViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        collectionView.reloadData()
+        self.collectionView.reloadData()
         
         let layout = UICollectionViewFlowLayout()
-       collectionView.collectionViewLayout = layout
-
+        self.collectionView.collectionViewLayout = layout
+        
     }
 }
 
@@ -52,23 +52,23 @@ class WatchedMovieViewController: UIViewController {
 
 extension WatchedMovieViewController: UISearchBarDelegate {
     
-func setupSearchBar(){
-    self.searchBar.delegate = self
-}
-func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-    guard let searchText = self.searchBar.text else { return }
-    if searchText == "" {
-        registeredMovieInfoList = realm?.objects(MovieInfo.self)
-    } else {
-        let predicate = NSPredicate(format: "title CONTAINS %@", searchText)
-        registeredMovieInfoList = realm?.objects(MovieInfo.self).filter(predicate)
+    func setupSearchBar(){
+        self.searchBar.delegate = self
     }
-    collectionView.reloadData()
-}
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard let searchText = self.searchBar.text else { return }
+        if searchText == "" {
+            self.registeredMovieInfoList = realm?.objects(MovieInfo.self)
+        } else {
+            let predicate = NSPredicate(format: "title CONTAINS %@", searchText)
+            self.registeredMovieInfoList = realm?.objects(MovieInfo.self).filter(predicate)
+        }
+        self.collectionView.reloadData()
+    }
 }
 
-    //MARK: - collectionView
-    
+//MARK: - collectionView
+
 extension WatchedMovieViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -86,20 +86,12 @@ extension WatchedMovieViewController: UICollectionViewDelegate, UICollectionView
         guard let registeredMovieInfoList = self.registeredMovieInfoList else { return }
         let movie = registeredMovieInfoList[indexPath.row]
         let movieDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "goToMovieDetail") as! MovieDetailViewController
-        //movie.idに一致するidがあるかをfilterで検索する
-        //あればそのオブジェクトを渡す
-        //nullになれば空のオブジェクトを渡す
         let movieInfo = realm?.object(ofType: MovieInfo.self, forPrimaryKey: movie.id)
         movieDetailViewController.movieInfo = movieInfo
         self.navigationController?.pushViewController(movieDetailViewController, animated: true)
     }
-    
-//    private func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimunLineSpacingForSectionAt section: Int) -> CGFloat {
-//        let space = self.collectionView.frame.width / 100
-//            return space
-//
-//    }
 }
+
 //MARK: - UICollectionViewDelegateFlowLayout
 
 extension WatchedMovieViewController: UICollectionViewDelegateFlowLayout {
@@ -113,7 +105,6 @@ extension WatchedMovieViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         // :親viewのwidth - 左右のマージン - セル間の水平方向の間隔 * (列数 - 1)
         let itemSpace = self.collectionView.frame.width - 10 - 10 * 2
-        let itemSizeWidth = self.collectionView.frame.width - itemSpace * 6
         let width = itemSpace / 3
         return CGSize(width: width, height: width * 1.5)
     }
@@ -125,7 +116,6 @@ extension WatchedMovieViewController: UICollectionViewDelegateFlowLayout {
     ///   - section: Int
     /// - Returns: UIEdgeInsets
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let space = self.collectionView.frame.width / 50
         return UIEdgeInsets(top: 20, left: 5 , bottom: 16, right: 5 )
     }
 }
