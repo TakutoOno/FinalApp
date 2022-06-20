@@ -21,6 +21,10 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var borderLabel: UILabel!
     
+    
+    @IBOutlet weak var averageScoreLabel: UILabel!
+    @IBOutlet weak var scoreTextField: UITextField!
+    
     var realm = try? Realm()
     
     var movie: MovieModel.Result?
@@ -41,8 +45,9 @@ class MovieDetailViewController: UIViewController {
         let nib: UINib = UINib(nibName: "PointReviewCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "pointReviewCell")
         
-        tableView.separatorColor = .yellow
+        self.scoreTextField.keyboardType = UIKeyboardType.numberPad
         
+        tableView.separatorColor = .yellow
         self.view.backgroundColor = UIColor.black
         self.titleLabel.textColor = UIColor.white
         self.overviewTitle.textColor = UIColor.white
@@ -67,12 +72,23 @@ class MovieDetailViewController: UIViewController {
             self.movieImageView.sd_setImage(with: self.imageURL)
             self.titleLabel.text = movie.title
             self.overviewLabel.text = movie.overview
+            if movieInfo.score != 0 {
+                self.scoreTextField.text = String(movieInfo.score)
+            }
+            let average = movie.vote_average * 10
+            let formatter = NumberFormatter()
+            formatter.minimumFractionDigits = 1
+            formatter.maximumFractionDigits = 1
+            let averageScore = formatter.string(from: average as NSDecimalNumber)!
+            self.averageScoreLabel.text = "\(averageScore)点"
         } else {
             self.movieImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
             self.imageURL = URL(string: "https://image.tmdb.org/t/p/w200" + (movieInfo.poster_path ?? ""))
             self.movieImageView.sd_setImage(with: self.imageURL)
             self.titleLabel.text = movieInfo.title
             self.overviewLabel.text = movieInfo.overview
+            self.averageScoreLabel.text = movieInfo.vote_average
+            self.scoreTextField.text = String(movieInfo.score)
         }
         self.tableView.reloadData()
     }
@@ -114,6 +130,7 @@ class MovieDetailViewController: UIViewController {
                 movieInfo.title = movie.title
                 movieInfo.poster_path = movie.poster_path
                 movieInfo.overview = movie.overview
+                movieInfo.vote_average = self.averageScoreLabel.text
                 if movie.genre_ids[0] >= 1 {
                     movieInfo.firstGenreId = movie.genre_ids[0]
                 }
@@ -126,8 +143,9 @@ class MovieDetailViewController: UIViewController {
                 if movie.genre_ids.count >= 4{
                     movieInfo.forthGenreId = movie.genre_ids[3]
                 }
-                realm.add(movieInfo, update: .modified)
             }
+            movieInfo.score = Int(self.scoreTextField.text!) ?? 0
+            realm.add(movieInfo, update: .modified)
         }
         self.navigationController?.popViewController(animated: true)
     }

@@ -26,6 +26,10 @@ class MovieInfo: Object {
     
     @objc dynamic var forthGenreId: Int = 0
     
+    @objc dynamic var vote_average: String!
+    
+    @objc dynamic var score: Int = 0
+    
     override static func primaryKey() -> String? {
         return "id"
     }

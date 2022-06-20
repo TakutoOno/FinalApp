@@ -26,6 +26,11 @@ class SearchViewController: UIViewController {
         self.searchButton.layer.cornerRadius = 10
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.searchTextField.text = ""
+    }
+    
     //MARK: - IBAction
     
     @IBAction func searchButton(_ sender: Any) {
