@@ -39,7 +39,7 @@ extension API: TargetType {
         case .search(let query):
             return .requestParameters(parameters: [
                 "query" : query,
-                "api_key": "f429e7ea56b47c5b30f36ecc50904e3c",
+                "api_key": "",
                 "language": "ja",
                 "page": "1"
             ], encoding: URLEncoding.queryString)
@@ -50,3 +50,7 @@ extension API: TargetType {
         return nil
     }
 }
+
+
+
+
