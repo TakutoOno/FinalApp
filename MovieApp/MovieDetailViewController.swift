@@ -38,6 +38,10 @@ class MovieDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target:self, action:#selector(dismissKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tapGesture)
+        
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
@@ -148,6 +152,11 @@ class MovieDetailViewController: UIViewController {
             realm.add(movieInfo, update: .modified)
         }
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func dismissKeyboard() {
+        // キーボードを閉じる
+        view.endEditing(true)
     }
 }
 

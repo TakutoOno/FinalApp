@@ -36,6 +36,8 @@ class PointReviewViewController: UIViewController {
         "鳥肌ポイント",
         "感動ポイント",
         "役者ポイント",
+        "戦闘ポイント",
+        "面白ポイント",
         "惜しいポイント"
     ]
     
@@ -50,6 +52,10 @@ class PointReviewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target:self, action:#selector(dismissKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tapGesture)
         
         self.pointSelectTextField.inputView = self.pointSelectPickerView
         self.timeSelectTextField.inputView = self.timeSelectPickerView
@@ -113,6 +119,11 @@ class PointReviewViewController: UIViewController {
             }
         }
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func dismissKeyboard() {
+        // キーボードを閉じる
+        view.endEditing(true)
     }
 }
 

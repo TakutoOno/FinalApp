@@ -20,6 +20,11 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target:self, action:#selector(dismissKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tapGesture)
+        
         self.view.backgroundColor = UIColor.black
         self.searchButton.backgroundColor = UIColor(hex: "eeff1f", alpha: 1.0)
         self.searchButton.tintColor = UIColor.black
@@ -41,5 +46,10 @@ class SearchViewController: UIViewController {
         let searchResultViewController = self.storyboard?.instantiateViewController(withIdentifier: "goToSearchResult") as! SearchResultViewController
         searchResultViewController.searchText = searchTextField.text
         self.navigationController?.pushViewController(searchResultViewController, animated: true)
+    }
+    
+    @objc func dismissKeyboard() {
+        // キーボードを閉じる
+        view.endEditing(true)
     }
 }
