@@ -7,7 +7,6 @@
 
 import UIKit
 import RealmSwift
-import SVProgressHUD
 
 class PointReviewViewController: UIViewController {
     
@@ -48,7 +47,7 @@ class PointReviewViewController: UIViewController {
         "結"
     ]
     
-//MARK: - LifeCycle
+    //MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,6 +84,9 @@ class PointReviewViewController: UIViewController {
         self.registerButton.layer.cornerRadius = 10
         self.registerButton.tintColor = UIColor.black
         self.view.backgroundColor = UIColor.black
+        
+        doneButton.tintColor = UIColor(hex: "eeff1f", alpha: 1.0)
+        cancelButton.tintColor = UIColor(hex: "eeff1f", alpha: 1.0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -96,11 +98,11 @@ class PointReviewViewController: UIViewController {
         self.commentTextView.text = ""
     }
     
-//MARK: - IBAction
+    //MARK: - IBAction
     
     @IBAction func pointReviewRegisterButton(_ sender: Any) {
         if self.pointSelectTextField.text == "" || self.timeSelectTextField.text == "" || self.commentTextView.text == "" {
-         //   SVProgressHUD.showError(withStatus: "全て入力して下さい")
+            //   SVProgressHUD.showError(withStatus: "全て入力して下さい")
             return
         }
         if let realm = try? Realm() {
@@ -171,8 +173,8 @@ extension PointReviewViewController: UIPickerViewDelegate, UIPickerViewDataSourc
             self.timeSelectTextField.text = self.timeList[self.timeSelectPickerRow]
             self.timeSelectTextField.resignFirstResponder()
         }
-        
     }
+    
     @objc func cancelPicker(){
         view.endEditing(true)
     }

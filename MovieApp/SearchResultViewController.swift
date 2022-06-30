@@ -78,7 +78,7 @@ extension SearchResultViewController: UICollectionViewDelegate, UICollectionView
         let movieDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "goToMovieDetail") as! MovieDetailViewController
         var movieInfo = realm.object(ofType: MovieInfo.self, forPrimaryKey: movie.id)
         if movieInfo == nil {
-             movieInfo = MovieInfo()
+            movieInfo = MovieInfo()
         }
         movieDetailViewController.movieInfo = movieInfo
         movieDetailViewController.movie = movie

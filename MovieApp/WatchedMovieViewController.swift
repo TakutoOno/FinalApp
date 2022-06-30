@@ -21,6 +21,10 @@ class WatchedMovieViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target:self, action:#selector(dismissKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tapGesture)
+        
         realm = try? Realm()
         
         let nib = UINib(nibName: "MovieCell", bundle: nil)
@@ -44,7 +48,11 @@ class WatchedMovieViewController: UIViewController {
         
         let layout = UICollectionViewFlowLayout()
         self.collectionView.collectionViewLayout = layout
-        
+    }
+    
+    @objc func dismissKeyboard() {
+        // キーボードを閉じる
+        view.endEditing(true)
     }
 }
 
@@ -55,6 +63,7 @@ extension WatchedMovieViewController: UISearchBarDelegate {
     func setupSearchBar(){
         self.searchBar.delegate = self
     }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard let searchText = self.searchBar.text else { return }
         if searchText == "" {
@@ -119,4 +128,3 @@ extension WatchedMovieViewController: UICollectionViewDelegateFlowLayout {
         return UIEdgeInsets(top: 20, left: 5 , bottom: 16, right: 5 )
     }
 }
-

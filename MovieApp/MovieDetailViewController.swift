@@ -20,8 +20,6 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var pointReviewPulsButton: UIButton!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var borderLabel: UILabel!
-    
-    
     @IBOutlet weak var averageScoreLabel: UILabel!
     @IBOutlet weak var scoreTextField: UITextField!
     

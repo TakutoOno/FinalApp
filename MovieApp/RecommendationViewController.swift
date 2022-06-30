@@ -140,7 +140,6 @@ class RecommendationViewController: UIViewController {
 extension RecommendationViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //      10以上なら１０　１０以下ならカウント
         if collectionView.tag == 0 {
             if self.random.count >= 10 {
                 return 10
@@ -213,7 +212,7 @@ extension RecommendationViewController: UICollectionViewDelegate, UICollectionVi
         }
         
         let movieDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "goToMovieDetail") as! MovieDetailViewController
-
+        
         let movieInfo = realm?.object(ofType: MovieInfo.self, forPrimaryKey: movie.id)
         movieDetailViewController.movieInfo = movieInfo
         self.navigationController?.pushViewController(movieDetailViewController, animated: true)

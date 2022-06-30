@@ -23,7 +23,7 @@ extension API: TargetType {
             return "search/movie"
         }
     }
-
+    
     var method: Moya.Method {
         switch self {
         case .search:
@@ -33,7 +33,7 @@ extension API: TargetType {
     var sampleData: Data {
         return Data()
     }
-
+    
     var task: Task {
         switch self {
         case .search(let query):
@@ -45,7 +45,7 @@ extension API: TargetType {
             ], encoding: URLEncoding.queryString)
         }
     }
-
+    
     var headers: [String : String]? {
         return nil
     }

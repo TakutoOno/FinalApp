@@ -11,7 +11,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // タブアイコンの色
         self.tabBar.tintColor = UIColor(hex: "eeff1f", alpha: 1.0)
         // タブバーの背景色を設定
@@ -22,13 +22,13 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         // UITabBarControllerDelegateプロトコルのメソッドをこのクラスで処理する。
         self.delegate = self
     }
-
+    
     // タブバーのアイコンがタップされた時に呼ばれるdelegateメソッドを処理する。
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-            // その他のViewControllerは通常のタブ切り替えを実施
-            return true
+        // その他のViewControllerは通常のタブ切り替えを実施
+        return true
     }
-
+    
 }
 
 
